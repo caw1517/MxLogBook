@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MxLogBook.Controllers
+namespace Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]

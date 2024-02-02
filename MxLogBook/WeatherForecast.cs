@@ -1,4 +1,4 @@
-namespace MxLogBook
+namespace  Backend
 {
     public class WeatherForecast
     {

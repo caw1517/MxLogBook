@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "GgDz8z6wAafybAngi0pzgEcGp6gnQ+RTqRh/8fhe86w=",
-  "Source": "MxLogBook",
-  "BasePath": "_content/MxLogBook",
+  "Hash": "n5xgAQ6zUIaWw0GRiBAnxS+iKccCeaRf+F00sBYdNq4=",
+  "Source": "Backend",
+  "BasePath": "_content/Backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
