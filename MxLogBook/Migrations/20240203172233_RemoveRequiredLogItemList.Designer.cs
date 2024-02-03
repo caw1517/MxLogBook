@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240203172233_RemoveRequiredLogItemList")]
+    partial class RemoveRequiredLogItemList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 3, 17, 31, 59, 127, DateTimeKind.Utc).AddTicks(3551),
+                            CreatedOn = new DateTime(2024, 2, 3, 17, 22, 32, 834, DateTimeKind.Utc).AddTicks(5492),
                             Discrepency = "Rear right hand tire has slow leak.",
                             VehicleId = 1
                         });
@@ -96,7 +99,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 3, 17, 31, 59, 127, DateTimeKind.Utc).AddTicks(3453),
+                            CreatedOn = new DateTime(2024, 2, 3, 17, 22, 32, 834, DateTimeKind.Utc).AddTicks(5352),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -105,7 +108,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2024, 2, 3, 17, 31, 59, 127, DateTimeKind.Utc).AddTicks(3455),
+                            CreatedOn = new DateTime(2024, 2, 3, 17, 22, 32, 834, DateTimeKind.Utc).AddTicks(5355),
                             Hours = 20,
                             Make = "Honda",
                             Model = "CRF250R",

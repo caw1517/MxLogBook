@@ -10,10 +10,12 @@
         //public string? Type { get; set; }
         public int? Mileage { get; set; }
         public int? Hours { get; set; }
-        public DateTime CreatedOn { get; set; }
+
+        //Default Timestamp
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         //Log Item Relation - One To Many
-        public virtual IList<LogItem> LogItems { get; set; }
+        public virtual IList<LogItem>? LogItems { get; set; }
 
 
     }
