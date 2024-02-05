@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205154223_UserSetup")]
+    partial class UserSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,7 +129,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 5, 15, 48, 10, 798, DateTimeKind.Utc).AddTicks(3485),
+                            CreatedOn = new DateTime(2024, 2, 5, 15, 42, 23, 38, DateTimeKind.Utc).AddTicks(1241),
                             Discrepency = "Rear right hand tire has slow leak.",
                             VehicleId = 1
                         });
@@ -166,7 +169,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 5, 15, 48, 10, 798, DateTimeKind.Utc).AddTicks(3267),
+                            CreatedOn = new DateTime(2024, 2, 5, 15, 42, 23, 38, DateTimeKind.Utc).AddTicks(1015),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -175,7 +178,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2024, 2, 5, 15, 48, 10, 798, DateTimeKind.Utc).AddTicks(3269),
+                            CreatedOn = new DateTime(2024, 2, 5, 15, 42, 23, 38, DateTimeKind.Utc).AddTicks(1017),
                             Hours = 20,
                             Make = "Honda",
                             Model = "CRF250R",
@@ -207,20 +210,6 @@ namespace Backend.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "fe0a1efc-4fcf-411b-98a5-95943b3066d8",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "21823a9a-41d8-4232-8557-76767e8ed362",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

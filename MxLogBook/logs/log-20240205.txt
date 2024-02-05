@@ -2,3 +2,18 @@
 2024-02-05 06:38:13.233 -08:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-02-05 06:38:13.233 -08:00 [INF] Hosting environment: Development
 2024-02-05 06:38:13.234 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 06:38:59.562 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-05 06:39:01.879 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 2318.7501 ms
+2024-02-05 06:39:10.985 -08:00 [INF] HTTP POST /api/Vehicles responded 201 in 316.1437 ms
+2024-02-05 06:39:17.410 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 32.2513 ms
+2024-02-05 06:39:26.111 -08:00 [INF] HTTP DELETE /api/Vehicles/6 responded 204 in 144.4319 ms
+2024-02-05 06:39:29.675 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 2.5992 ms
+2024-02-05 06:54:04.027 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-05 06:54:04.048 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-05 06:54:04.048 -08:00 [INF] Hosting environment: Development
+2024-02-05 06:54:04.048 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 07:41:05.785 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-05 07:41:05.808 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-05 07:41:05.808 -08:00 [INF] Hosting environment: Development
+2024-02-05 07:41:05.808 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 07:42:03.468 -08:00 [INF] Application is shutting down...

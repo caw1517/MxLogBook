@@ -1,6 +1,8 @@
 using Backend.Configurations;
 using Backend.Data;
+using Backend.Models;
 using Backend.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -17,6 +19,11 @@ builder.Services.AddDbContext<MxLogBookDbContext>(options =>
     options.UseNpgsql(connectionString);
 
 });
+
+//Setup Identity (Currently a default user)
+builder.Services.AddIdentityCore<ApplicationUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<MxLogBookDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

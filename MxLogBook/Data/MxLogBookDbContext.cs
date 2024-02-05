@@ -1,9 +1,12 @@
 ﻿using Backend.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Data
 {
-    public class MxLogBookDbContext : DbContext
+    //Db uses Identity Db Context
+    public class MxLogBookDbContext : IdentityDbContext<ApplicationUser>
     {
         //Setup DbContext - Inherits from base options
         public MxLogBookDbContext(DbContextOptions options) : base(options) 
@@ -51,6 +54,20 @@ namespace Backend.Data
                     Closed = false,
                     CreatedOn = DateTime.UtcNow,
                     VehicleId = 1
+                }
+            );
+
+            //Seed Default Roles
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new IdentityRole
+                {
+                    Name = "User",
+                    NormalizedName = "USER"
                 }
             );
         }
