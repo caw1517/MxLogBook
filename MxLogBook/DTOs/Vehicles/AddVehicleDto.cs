@@ -1,18 +1,20 @@
-﻿namespace Backend.Models
+﻿using Backend.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Backend.DTOs.Vehicles
 {
-    public class Vehicle
+    public class AddVehicleDto
     {
-        public int Id { get; set; }
+        [Required]
         public string? Make { get; set; }
-        public string?  Model { get; set; }
+        [Required]
+        public string? Model { get; set; }
+        [Required]
         public int Year { get; set; }
         public int? Mileage { get; set; }
         public int? Hours { get; set; }
-
+         
         //Default Timestamp
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
-
-        //Log Item Relation - One To Many
-        public virtual IList<LogItem>? LogItems { get; set; }
     }
 }

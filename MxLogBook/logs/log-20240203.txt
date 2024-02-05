@@ -17,3 +17,407 @@
 2024-02-03 09:29:44.068 -08:00 [INF] HTTP POST /api/Vehicles responded 201 in 112.5314 ms
 2024-02-03 09:30:44.773 -08:00 [INF] HTTP DELETE /api/Vehicles/4 responded 204 in 487.3767 ms
 2024-02-03 09:31:41.953 -08:00 [INF] Application is shutting down...
+2024-02-03 09:32:19.707 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 09:32:19.735 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 09:32:19.736 -08:00 [INF] Hosting environment: Development
+2024-02-03 09:32:19.736 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 09:32:31.658 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 09:32:33.096 -08:00 [INF] HTTP POST /api/Vehicles responded 201 in 1440.5760 ms
+2024-02-03 09:39:28.180 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 343.0677 ms
+2024-02-03 09:39:39.490 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 20.7903 ms
+2024-02-03 09:39:53.379 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 123.3973 ms
+2024-02-03 09:48:16.385 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 09:48:16.418 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 09:48:16.418 -08:00 [INF] Hosting environment: Development
+2024-02-03 09:48:16.419 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 09:52:59.075 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 09:52:59.111 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 09:52:59.111 -08:00 [INF] Hosting environment: Development
+2024-02-03 09:52:59.111 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 09:59:36.504 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 09:59:36.530 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 09:59:36.531 -08:00 [INF] Hosting environment: Development
+2024-02-03 09:59:36.531 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:00:29.148 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 10:00:29.178 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 10:00:29.178 -08:00 [INF] Hosting environment: Development
+2024-02-03 10:00:29.178 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:05:28.216 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 10:05:28.248 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 10:05:28.248 -08:00 [INF] Hosting environment: Development
+2024-02-03 10:05:28.249 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:05:47.562 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 10:05:47.609 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 10:05:47.609 -08:00 [INF] Hosting environment: Development
+2024-02-03 10:05:47.609 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:06:25.484 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 10:06:25.509 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 10:06:25.509 -08:00 [INF] Hosting environment: Development
+2024-02-03 10:06:25.509 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:06:37.028 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:07:52.261 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:08:07.636 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:08:41.263 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:08:57.078 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:08:58.319 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles" for actions - Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.Getvehicles (Backend),Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 10:09:31.375 -08:00 [INF] Application is shutting down...
+2024-02-03 10:11:08.134 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 10:11:08.203 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 10:11:08.204 -08:00 [INF] Hosting environment: Development
+2024-02-03 10:11:08.204 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 10:14:38.778 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 10:14:40.628 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 1852.6844 ms
+2024-02-03 10:14:53.365 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 46.9474 ms
+2024-02-03 10:15:09.071 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 102.2907 ms
+2024-02-03 10:15:21.854 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 12.9338 ms
+2024-02-03 12:39:51.345 -08:00 [INF] Application is shutting down...
+2024-02-03 12:44:02.029 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 12:44:02.051 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 12:44:02.051 -08:00 [INF] Hosting environment: Development
+2024-02-03 12:44:02.051 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 12:44:21.564 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 12:44:23.733 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 2170.4844 ms
+2024-02-03 12:44:29.518 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 147.7302 ms
+2024-02-03 12:46:12.440 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 73.9128 ms
+2024-02-03 12:48:19.380 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 7.0030 ms
+2024-02-03 12:48:30.333 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 12:48:30.367 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 12:48:30.368 -08:00 [INF] Hosting environment: Development
+2024-02-03 12:48:30.368 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 12:48:39.723 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 12:48:41.340 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 1618.5996 ms
+2024-02-03 12:48:48.893 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 30.8625 ms
+2024-02-03 12:50:27.042 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles/{id}" for actions - Backend.Controllers.VehiclesController.GetVehicle (Backend),Backend.Controllers.VehiclesController.GetVehicle (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 12:50:32.797 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Vehicles/{id}" for actions - Backend.Controllers.VehiclesController.GetVehicle (Backend),Backend.Controllers.VehiclesController.GetVehicle (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 12:51:13.545 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 12:51:13.568 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 12:51:13.568 -08:00 [INF] Hosting environment: Development
+2024-02-03 12:51:13.568 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 12:51:53.585 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 12:51:55.541 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 1958.7665 ms
+2024-02-03 12:52:03.817 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 46.8362 ms
+2024-02-03 12:52:08.560 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 70.4607 ms
+2024-02-03 12:54:30.830 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 12:54:30.856 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 12:54:30.857 -08:00 [INF] Hosting environment: Development
+2024-02-03 12:54:30.857 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 12:56:21.733 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "PUT api/Vehicles/{id}" for actions - Backend.Controllers.VehiclesController.UpdateVehicle (Backend),Backend.Controllers.VehiclesController.UpdateVehicle (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 12:56:44.043 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "PUT api/Vehicles/{id}" for actions - Backend.Controllers.VehiclesController.UpdateVehicle (Backend),Backend.Controllers.VehiclesController.UpdateVehicle (Backend). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 12:57:00.738 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - Backend.Controllers.VehiclesController.GetVehicles (Backend). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 12:58:10.851 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 12:58:10.876 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 12:58:10.877 -08:00 [INF] Hosting environment: Development
+2024-02-03 12:58:10.877 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:02:13.197 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - Backend.Controllers.VehiclesController.UpdateVehicle (Backend). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - Backend.DTOs.Vehicles.UpdateVehicleDto. See inner exception
+ ---> System.TypeLoadException: Could not load type 'Invalid_Token.0x0200003B' from assembly 'Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimeMethodInfo.FetchNonReturnParameters()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Attribute.GetIndexParameterTypes(PropertyInfo element)
+   at System.Attribute.InternalGetCustomAttributes(PropertyInfo element, Type type, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.<GetDataPropertiesFor>b__6_1(PropertyInfo property)
+   at System.Linq.Enumerable.WhereArrayIterator`1.ToArray()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.GetDataPropertiesFor(Type objectType, Type& extensionDataType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GetDataContractFor(Type modelType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBody(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 13:02:18.585 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - Backend.Controllers.VehiclesController.UpdateVehicle (Backend). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - Backend.DTOs.Vehicles.UpdateVehicleDto. See inner exception
+ ---> System.TypeLoadException: Could not load type 'Invalid_Token.0x0200003B' from assembly 'Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimeMethodInfo.FetchNonReturnParameters()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Attribute.GetIndexParameterTypes(PropertyInfo element)
+   at System.Attribute.InternalGetCustomAttributes(PropertyInfo element, Type type, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.<GetDataPropertiesFor>b__6_1(PropertyInfo property)
+   at System.Linq.Enumerable.WhereArrayIterator`1.ToArray()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.GetDataPropertiesFor(Type objectType, Type& extensionDataType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GetDataContractFor(Type modelType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBody(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 13:02:24.714 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - Backend.Controllers.VehiclesController.UpdateVehicle (Backend). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - Backend.DTOs.Vehicles.UpdateVehicleDto. See inner exception
+ ---> System.TypeLoadException: Could not load type 'Invalid_Token.0x0200003B' from assembly 'Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimeMethodInfo.FetchNonReturnParameters()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Attribute.GetIndexParameterTypes(PropertyInfo element)
+   at System.Attribute.InternalGetCustomAttributes(PropertyInfo element, Type type, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.<GetDataPropertiesFor>b__6_1(PropertyInfo property)
+   at System.Linq.Enumerable.WhereArrayIterator`1.ToArray()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.GetDataPropertiesFor(Type objectType, Type& extensionDataType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GetDataContractFor(Type modelType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBody(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 13:02:31.472 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - Backend.Controllers.VehiclesController.UpdateVehicle (Backend). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate schema for type - Backend.DTOs.Vehicles.UpdateVehicleDto. See inner exception
+ ---> System.TypeLoadException: Could not load type 'Invalid_Token.0x0200003B' from assembly 'Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimeMethodInfo.FetchNonReturnParameters()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Attribute.GetIndexParameterTypes(PropertyInfo element)
+   at System.Attribute.InternalGetCustomAttributes(PropertyInfo element, Type type, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.<GetDataPropertiesFor>b__6_1(PropertyInfo property)
+   at System.Linq.Enumerable.WhereArrayIterator`1.ToArray()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.OrderedEnumerable`1.GetEnumerator()+MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.JsonSerializerDataContractResolver.GetDataPropertiesFor(Type objectType, Type& extensionDataType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GetDataContractFor(Type modelType)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchemaForParameter(Type modelType, SchemaRepository schemaRepository, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SchemaGenerator.GenerateSchema(Type modelType, SchemaRepository schemaRepository, MemberInfo memberInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateSchema(Type type, SchemaRepository schemaRepository, PropertyInfo propertyInfo, ParameterInfo parameterInfo, ApiParameterRouteInfo routeInfo)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBodyFromBodyParameter(ApiDescription apiDescription, SchemaRepository schemaRepository, ApiParameterDescription bodyParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateRequestBody(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-03 13:02:47.774 -08:00 [INF] Application is shutting down...
+2024-02-03 13:03:01.358 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:03:01.381 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:03:01.381 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:03:01.381 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:03:53.142 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-03 13:03:53.484 -08:00 [INF] HTTP PUT /api/Vehicles/1 responded 400 in 345.0558 ms
+2024-02-03 13:04:03.285 -08:00 [INF] HTTP PUT /api/Vehicles/1 responded 204 in 1518.8232 ms
+2024-02-03 13:04:09.648 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 166.3495 ms
+2024-02-03 13:05:53.906 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 68.2842 ms
+2024-02-03 13:06:41.638 -08:00 [INF] HTTP PUT /api/Vehicles/1 responded 204 in 11.4164 ms
+2024-02-03 13:06:45.423 -08:00 [INF] HTTP GET /api/Vehicles/1 responded 200 in 4.3568 ms
+2024-02-03 13:06:52.204 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 26.8631 ms
+2024-02-03 13:07:06.446 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:07:06.476 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:07:06.476 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:07:06.477 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:18:28.841 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:18:28.866 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:18:28.866 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:18:28.866 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:19:12.716 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:19:12.756 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:19:12.757 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:19:12.757 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:28:52.382 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:28:52.408 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:28:52.408 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:28:52.408 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:29:18.853 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:29:18.888 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:29:18.889 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:29:18.889 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:29:26.446 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:29:26.469 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:29:26.470 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:29:26.470 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:30:12.803 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:30:12.825 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:30:12.826 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:30:12.826 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:32:13.384 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:32:13.407 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:32:13.408 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:32:13.408 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:33:31.989 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:33:32.016 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:33:32.016 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:33:32.016 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:33:42.893 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:33:42.914 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:33:42.915 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:33:42.915 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:33:57.065 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:33:57.086 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:33:57.087 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:33:57.087 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:34:09.013 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:34:09.035 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:34:09.036 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:34:09.036 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:34:23.877 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:34:23.902 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:34:23.903 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:34:23.903 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:34:43.356 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:34:43.377 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:34:43.378 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:34:43.378 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:34:51.095 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:34:51.114 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:34:51.115 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:34:51.115 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:36:36.453 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:36:36.477 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:36:36.477 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:36:36.477 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:54:17.359 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:54:17.391 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:54:17.391 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:54:17.391 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:54:45.767 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:54:45.793 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:54:45.793 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:54:45.793 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-03 13:56:04.734 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-03 13:56:04.759 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-03 13:56:04.760 -08:00 [INF] Hosting environment: Development
+2024-02-03 13:56:04.760 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook

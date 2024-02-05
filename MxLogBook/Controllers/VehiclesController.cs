@@ -2,6 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Models;
+using Backend.DTOs;
+using Backend.DTOs.Vehicles;
+using AutoMapper;
+using Serilog;
+using Backend.Services;
 
 namespace Backend.Controllers
 {
@@ -9,54 +14,73 @@ namespace Backend.Controllers
     [ApiController]
     public class VehiclesController : ControllerBase
     {
-        //DB Context
-        private readonly MxLogBookDbContext _context;
+        //Private
+        private readonly IMapper _mapper;
+        private readonly IVehicleService _vehicleService;
 
-        public VehiclesController(MxLogBookDbContext context)
+
+        public VehiclesController (IMapper mapper, IVehicleService vehicleService)
         {
-            _context = context;
+            _vehicleService = vehicleService;
+            _mapper = mapper;
         }
 
         // GET: api/Vehicles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> Getvehicles()
+        public async Task<ActionResult<IEnumerable<GetVehicleDto>>> GetVehicles()
         {
-            var results = await _context.vehicles.ToListAsync();
-            return Ok(results);
+            var vehicles = await _vehicleService.GetAllAsync();
+            var records = _mapper.Map<List<GetVehicleDto>>(vehicles);
+            return Ok(records);
         }
 
         // GET: api/Vehicles/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vehicle>> GetVehicle(int id)
+        public async Task<ActionResult<GetVehicleDetailsDto>> GetVehicle(int id)
         {
-            var vehicle = await _context.vehicles.FindAsync(id);
+            //Include the hotels and search based off of Id's
+            //var vehicle = await _vehicleService.GetAsync(id);
+            //var vehicle = await _context.vehicles.Include(q => q.LogItems).FirstOrDefaultAsync(q => q.Id == id);
+            var vehicle = await _vehicleService.GetDetails(id);
 
             if (vehicle == null)
             {
                 return NotFound();
             }
 
-            return Ok(vehicle);
+            var result = _mapper.Map<GetVehicleDetailsDto>(vehicle);
+
+            return Ok(result);
         }
 
         // PUT: api/Vehicles/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateVehicle(int id, Vehicle vehicle)
+        public async Task<IActionResult> UpdateVehicle(int id, UpdateVehicleDto updatedVehicle)
         {
-            if (id != vehicle.Id)
+            if (id != updatedVehicle.Id)
             {
                 return BadRequest("Invalid Vehicle Id");
             }
 
-            _context.Entry(vehicle).State = EntityState.Modified;
+            var vehicle = await _vehicleService.GetAsync(id);
+            //var vehicle = await _context.vehicles.FirstOrDefaultAsync(q => q.Id == id);
+
+            if(vehicle == null)
+            {
+                return NotFound();
+            }
+
+            //Map the updated vehicle to the vehicle
+            _mapper.Map(updatedVehicle, vehicle);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _vehicleService.UpdateAsync(vehicle);
+                //await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VehicleExists(id))
+                if (!await VehicleExists(id))
                 {
                     return NotFound();
                 }
@@ -70,13 +94,16 @@ namespace Backend.Controllers
         }
 
         // POST: api/Vehicles
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Vehicle>> AddVehicle(Vehicle vehicle)
+        public async Task<ActionResult<Vehicle>> AddVehicle(AddVehicleDto newVehicle)
         {
-            _context.vehicles.Add(vehicle);
-            await _context.SaveChangesAsync();
+            //Map Vehicle DTO
+            var vehicle = _mapper.Map<Vehicle>(newVehicle);
 
+            //Save the new vehicle
+            await _vehicleService.AddAsync(vehicle);
+
+            //Return the newly created vehicle
             return CreatedAtAction("GetVehicle", new { id = vehicle.Id }, vehicle);
         }
 
@@ -84,21 +111,20 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
-            var vehicle = await _context.vehicles.FindAsync(id);
+            var vehicle = await _vehicleService.GetAsync(id);
             if (vehicle == null)
             {
                 return NotFound();
             }
 
-            _context.vehicles.Remove(vehicle);
-            await _context.SaveChangesAsync();
+            await _vehicleService.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool VehicleExists(int id)
+        private async Task<bool> VehicleExists(int id)
         {
-            return _context.vehicles.Any(e => e.Id == id);
+            return await _vehicleService.Exists(id);
         }
     }
 }

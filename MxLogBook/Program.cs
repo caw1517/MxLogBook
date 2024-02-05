@@ -1,4 +1,6 @@
+using Backend.Configurations;
 using Backend.Data;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -31,6 +33,13 @@ builder.Services.AddCors(options =>
 
 //Setup Serilog
 builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+
+//Setup AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+
+//Configure Services
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 
 var app = builder.Build();
 
