@@ -36,3 +36,14 @@
 2024-02-05 09:11:45.118 -08:00 [INF] Application started. Press Ctrl+C to shut down.
 2024-02-05 09:11:45.118 -08:00 [INF] Hosting environment: Development
 2024-02-05 09:11:45.118 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 09:25:23.351 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-05 09:25:23.383 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-05 09:25:23.383 -08:00 [INF] Hosting environment: Development
+2024-02-05 09:25:23.383 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 09:26:23.307 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-05 09:26:25.278 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 1972.5105 ms
+2024-02-05 09:26:42.312 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 276.2996 ms
+2024-02-05 09:53:51.543 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-05 09:53:51.581 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-05 09:53:51.582 -08:00 [INF] Hosting environment: Development
+2024-02-05 09:53:51.582 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook

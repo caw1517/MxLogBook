@@ -6,6 +6,6 @@ namespace Backend.Services
     public interface IAuthService
     {
         Task<IEnumerable<IdentityError>> RegisterUser(RegisterUserDto registerUserDto);
-        Task<bool> LoginUser(LoginUserDto loginUserDto);
+        Task<AuthResponseDto> LoginUser(LoginUserDto loginUserDto);
     }
 }

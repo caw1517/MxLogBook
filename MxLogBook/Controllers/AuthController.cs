@@ -45,12 +45,12 @@ namespace Backend.Controllers
         [Route("login")]
         public async Task<ActionResult> LoginUser(LoginUserDto loginUserDto)
         {
-            var isValidated = await _authService.LoginUser(loginUserDto);
+            var authResponse = await _authService.LoginUser(loginUserDto);
 
-            if (!isValidated)
+            if (authResponse == null)
                 return Unauthorized();
 
-            return Ok("Logged in");
+            return Ok(authResponse);
         }
     }
 }
