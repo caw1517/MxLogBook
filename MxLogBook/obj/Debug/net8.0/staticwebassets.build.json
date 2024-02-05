@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eXGHofm2Myc9epnjytH2baR2FbQCmZ6W0Jj5CmlJE0s=",
+  "Hash": "/oeyLG9LQ+NRbZx1vwV6q4X7SJvIl4P9Ff+SqVqQKd4=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -47,10 +47,10 @@
       "OriginalItemSpec": "C:\\Users\\w_can\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.1\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css",
+      "Identity": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css",
       "SourceId": "Backend",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Backend",
       "RelativePath": "Backend.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css"
+      "OriginalItemSpec": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css"
     }
   ]
 }

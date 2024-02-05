@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Backend.DTOs.Auth;
 using Backend.DTOs.LogItem;
 using Backend.DTOs.Vehicles;
 using Backend.Models;
@@ -17,6 +18,9 @@ namespace Backend.Configurations
 
             //Log Item Maps
             CreateMap<LogItem, GetLogItemDto>().ReverseMap();
+
+            //User Maps
+            CreateMap<ApplicationUser, RegisterUserDto>().ReverseMap();
         }
     }
 }
