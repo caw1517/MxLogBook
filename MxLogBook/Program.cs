@@ -26,7 +26,9 @@ builder.Services.AddDbContext<MxLogBookDbContext>(options =>
 //Setup Identity (Currently a default user)
 builder.Services.AddIdentityCore<ApplicationUser>()
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<MxLogBookDbContext>();
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("MxLogBookApi")
+    .AddEntityFrameworkStores<MxLogBookDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -88,6 +90,7 @@ app.UseHttpsRedirection();
 //Use App Cors
 app.UseCors("AllowAll");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -15,6 +15,7 @@ namespace Backend.Services
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
+        private ApplicationUser _user;
 
         public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration)
         {
@@ -23,29 +24,41 @@ namespace Backend.Services
             _configuration = configuration;
         }
 
+        public async Task<string> CreateRefreshToken()
+        {
+            //Remove previous token
+            await _userManager.RemoveAuthenticationTokenAsync(_user, "MxLogBookApi", "RefreshToken");
+
+            //Make new refresh token
+            var newRefreshToken = await _userManager.GenerateUserTokenAsync(_user, "MxLogBookApi", "RefreshToken");
+
+            var result = await _userManager.SetAuthenticationTokenAsync(_user, "MxLogBookApi", "RefreshToken", newRefreshToken);
+
+            return newRefreshToken;
+        }
+
         public async Task<AuthResponseDto> LoginUser(LoginUserDto loginUserDto)
         {
-            bool isValidUser;
-
             //Find the user
-            var user = await _userManager.FindByEmailAsync(loginUserDto.Email);
+            _user = await _userManager.FindByEmailAsync(loginUserDto.Email);
 
             //Check the password
-            isValidUser = await _userManager.CheckPasswordAsync(user, loginUserDto.Password);
+            bool isValidUser = await _userManager.CheckPasswordAsync(_user, loginUserDto.Password);
 
             //If user is null or invalid return null
-            if(user == null || isValidUser == false)
+            if(_user == null || isValidUser == false)
             {
                 return null;
             }
 
             //Generate the token
-            var token = await GenerateToken(user);
+            var token = await GenerateToken();
 
             return new AuthResponseDto
-            {   
+            {
                 Token = token,
-                UserId = user.Id
+                UserId = _user.Id,
+                RefreshToken = await CreateRefreshToken()
             };
         }
 
@@ -67,7 +80,39 @@ namespace Backend.Services
             return result.Errors;
         }
 
-        private async Task<string> GenerateToken(ApplicationUser user)
+        public async Task<AuthResponseDto> VerifyRefreshToken(AuthResponseDto request)
+        {
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(request.Token);
+            var username = tokenContent.Claims.ToList().FirstOrDefault(q => q.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+            //Find the user
+            _user = await _userManager.FindByNameAsync(username);
+
+            if (_user == null || _user.Id != request.UserId)
+                return null;
+
+            var isValidRefreshToken = await _userManager.VerifyUserTokenAsync(_user, "MxLogBookApi", "RefreshToken", request.RefreshToken);
+
+            //If it is valid
+            if (isValidRefreshToken)
+            {
+                //Generate new token
+                var token = await GenerateToken();
+
+                return new AuthResponseDto
+                {
+                    Token = token,
+                    UserId = _user.Id,
+                    RefreshToken = await CreateRefreshToken()
+                };
+            }
+
+            await _userManager.UpdateSecurityStampAsync(_user);
+            return null;
+        }
+
+        private async Task<string> GenerateToken()
         {
             //Get the security key
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
@@ -76,19 +121,19 @@ namespace Backend.Services
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             //Get the users roles and get role claims
-            var roles = await _userManager.GetRolesAsync(user);
+            var roles = await _userManager.GetRolesAsync(_user);
             var roleClaims = roles.Select(x => new Claim(ClaimTypes.Role, x)).ToList();
 
             //Get user claims if they exist in the DB
-            var userClaims = await _userManager.GetClaimsAsync(user);
+            var userClaims = await _userManager.GetClaimsAsync(_user);
 
             //Set the claims
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Sub, _user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim("uid", user.Id)
+                new Claim(JwtRegisteredClaimNames.Email, _user.Email),
+                new Claim("uid", _user.Id)
             }
             .Union(userClaims).Union(roleClaims);
 

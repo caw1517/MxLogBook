@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Qz1xwjtEKKsgnfY8xwtnGbXAag/0ahZvJU+iNQv8fFlO9dbagtz1XIBlfwmikBj/X/un0+OhpnS9nQro1Yj/Q==",
+  "dgSpecHash": "+SE8PVvsIdB7DrLXRgXFHUVHTHh2WSaEk9IumbMuVheQTxq8Ve7zJuN89vptPfk4UhdhYD/WjCsbEBTiMHogWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\Backend.csproj",
+  "projectFilePath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\w_can\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\w_can\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

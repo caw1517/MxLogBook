@@ -7,5 +7,7 @@ namespace Backend.Services
     {
         Task<IEnumerable<IdentityError>> RegisterUser(RegisterUserDto registerUserDto);
         Task<AuthResponseDto> LoginUser(LoginUserDto loginUserDto);
+        Task<string> CreateRefreshToken();
+        Task<AuthResponseDto> VerifyRefreshToken(AuthResponseDto request);
     }
 }

@@ -52,5 +52,20 @@ namespace Backend.Controllers
 
             return Ok(authResponse);
         }
+
+        //POST: api/Auth/refreshtoken
+        [HttpPost]
+        [Route("refreshtoken")]
+        public async Task<ActionResult> RefreshToken(AuthResponseDto request)
+        {
+            //Verify the token
+            var authResponse = await _authService.VerifyRefreshToken(request);
+
+            //If the response is null, return unauth
+            if(authResponse is null)
+                return Unauthorized();
+
+            return Ok(authResponse);
+        }
     }
 }

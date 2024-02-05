@@ -7,11 +7,13 @@ using Backend.DTOs.Vehicles;
 using AutoMapper;
 using Serilog;
 using Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class VehiclesController : ControllerBase
     {
         //Private
