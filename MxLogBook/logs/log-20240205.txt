@@ -89,3 +89,16 @@
 2024-02-05 12:19:01.775 -08:00 [INF] Hosting environment: Development
 2024-02-05 12:19:01.775 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
 2024-02-05 12:19:08.011 -08:00 [INF] Application is shutting down...
+2024-02-05 12:19:18.322 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-05 12:19:18.352 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-05 12:19:18.353 -08:00 [INF] Hosting environment: Development
+2024-02-05 12:19:18.353 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-05 12:19:23.406 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-05 12:19:25.245 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 1839.8539 ms
+2024-02-05 12:22:36.407 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 172.0926 ms
+2024-02-05 12:30:27.619 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 371.2841 ms
+2024-02-05 12:34:29.795 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 186.9052 ms
+2024-02-05 12:35:50.007 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 699.0861 ms
+2024-02-05 12:40:13.606 -08:00 [INF] HTTP GET /api/Vehicles responded 401 in 93.4700 ms
+2024-02-05 12:40:23.584 -08:00 [INF] HTTP GET /api/Vehicles responded 200 in 102.9973 ms
+2024-02-05 14:06:02.686 -08:00 [INF] Application is shutting down...
