@@ -8,3 +8,132 @@
 2024-02-13 10:31:36.961 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 109.9422 ms
 2024-02-13 10:40:34.378 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 104.9373 ms
 2024-02-13 10:43:03.952 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 98.9442 ms
+2024-02-13 10:48:04.173 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 130.5178 ms
+2024-02-13 10:50:45.461 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 96.9408 ms
+2024-02-13 10:51:56.844 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 79.9168 ms
+2024-02-13 10:58:49.361 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 159.8856 ms
+2024-02-13 11:11:18.197 -07:00 [ERR] HTTP POST /api/Auth/refreshtoken responded 500 in 8.1126 ms
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX12709: CanReadToken() returned false. JWT is not well formed.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadJwtToken(String token)
+   at Backend.Services.AuthService.VerifyRefreshToken(AuthResponseDto request)
+   at Backend.Controllers.AuthController.RefreshToken(AuthResponseDto request)
+   at lambda_method303(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2024-02-13 11:11:18.203 -07:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX12709: CanReadToken() returned false. JWT is not well formed.
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ReadJwtToken(String token)
+   at Backend.Services.AuthService.VerifyRefreshToken(AuthResponseDto request)
+   at Backend.Controllers.AuthController.RefreshToken(AuthResponseDto request)
+   at lambda_method303(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-02-13 11:13:21.578 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 9.2034 ms
+2024-02-13 11:13:21.699 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 0.7206 ms
+2024-02-13 11:13:41.182 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 0.4727 ms
+2024-02-13 11:13:41.250 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 0.5565 ms
+2024-02-13 11:13:43.416 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 0.7662 ms
+2024-02-13 11:13:43.493 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 415 in 0.5172 ms
+2024-02-13 11:14:06.089 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 61.1528 ms
+2024-02-13 11:14:06.203 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.6170 ms
+2024-02-13 11:14:15.582 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 16.4996 ms
+2024-02-13 11:14:15.641 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.0401 ms
+2024-02-13 11:14:29.713 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 13.6562 ms
+2024-02-13 11:14:29.853 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.9264 ms
+2024-02-13 11:14:48.779 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.4087 ms
+2024-02-13 11:14:48.907 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.7163 ms
+2024-02-13 11:15:05.087 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 11.7555 ms
+2024-02-13 11:15:05.153 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.9839 ms
+2024-02-13 11:15:44.488 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 13.1300 ms
+2024-02-13 11:15:44.631 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.5891 ms
+2024-02-13 11:15:47.157 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.9267 ms
+2024-02-13 11:15:47.262 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.2968 ms
+2024-02-13 11:16:22.865 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 11.9268 ms
+2024-02-13 11:16:22.935 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.6854 ms
+2024-02-13 11:16:37.630 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 15.9707 ms
+2024-02-13 11:16:37.819 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.3942 ms
+2024-02-13 11:16:41.159 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.5726 ms
+2024-02-13 11:16:41.259 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.3204 ms
+2024-02-13 11:23:43.592 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 44.6733 ms
+2024-02-13 11:23:43.691 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.8068 ms
+2024-02-13 11:26:58.169 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.5188 ms
+2024-02-13 11:26:58.305 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.8682 ms
+2024-02-13 11:27:44.522 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.7530 ms
+2024-02-13 11:27:44.634 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.3537 ms
+2024-02-13 11:29:47.120 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 57.1848 ms
+2024-02-13 11:29:47.207 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.3765 ms
+2024-02-13 11:29:53.522 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 15.9463 ms
+2024-02-13 11:29:53.633 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.2667 ms
+2024-02-13 11:30:06.364 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.6906 ms
+2024-02-13 11:30:06.429 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 5.9903 ms
+2024-02-13 11:30:08.237 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.8066 ms
+2024-02-13 11:30:08.333 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.4706 ms
+2024-02-13 11:30:13.984 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.4614 ms
+2024-02-13 11:30:14.050 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.7181 ms
+2024-02-13 11:30:23.381 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.6126 ms
+2024-02-13 11:30:23.475 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.8993 ms
+2024-02-13 11:30:24.058 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.3489 ms
+2024-02-13 11:30:24.143 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.8424 ms
+2024-02-13 11:30:37.134 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 13.9495 ms
+2024-02-13 11:30:37.223 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 11.6361 ms
+2024-02-13 11:31:19.349 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.9482 ms
+2024-02-13 11:31:19.432 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.7192 ms
+2024-02-13 11:31:44.553 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 19.2590 ms
+2024-02-13 11:31:44.629 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.4683 ms
+2024-02-13 11:32:18.444 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.5053 ms
+2024-02-13 11:32:18.535 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.6526 ms
+2024-02-13 11:32:37.279 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.2713 ms
+2024-02-13 11:32:37.371 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.9487 ms
+2024-02-13 11:32:56.457 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 14.8479 ms
+2024-02-13 11:32:56.537 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.9188 ms
+2024-02-13 11:33:02.962 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.6493 ms
+2024-02-13 11:33:03.071 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.6570 ms
+2024-02-13 11:33:06.629 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.7335 ms
+2024-02-13 11:33:06.696 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 5.9423 ms
+2024-02-13 11:33:49.558 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.5483 ms
+2024-02-13 11:33:49.706 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.1274 ms
+2024-02-13 11:33:54.662 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 6.7383 ms
+2024-02-13 11:33:54.744 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.0556 ms
+2024-02-13 11:34:02.464 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 6.4116 ms
+2024-02-13 11:34:02.655 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 8.6137 ms
+2024-02-13 11:34:15.508 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 9.3417 ms
+2024-02-13 11:34:15.665 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 12.4631 ms
+2024-02-13 11:34:25.969 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 6.6018 ms
+2024-02-13 11:35:33.949 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 98.4924 ms
+2024-02-13 11:36:49.078 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.8832 ms
+2024-02-13 11:37:25.731 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 54.2934 ms
+2024-02-13 11:38:35.479 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 6.5767 ms
+2024-02-13 11:39:39.092 -07:00 [INF] HTTP POST /api/Auth/login responded 200 in 56.9639 ms
+2024-02-13 11:41:40.216 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 54.2592 ms
+2024-02-13 11:42:59.035 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.4158 ms
+2024-02-13 11:42:59.167 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 7.7452 ms
+2024-02-13 11:43:14.122 -07:00 [INF] HTTP GET /api/Vehicles/5 responded 200 in 70.9802 ms
+2024-02-13 11:44:58.706 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.7214 ms
+2024-02-13 11:44:58.836 -07:00 [INF] HTTP POST /api/Auth/refreshtoken responded 200 in 10.0205 ms
