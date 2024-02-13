@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\Backend.csproj": {}
+    "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\Backend.csproj": {
+    "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\Backend.csproj",
+        "projectPath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\Backend.csproj",
         "packagesPath": "C:\\Users\\w_can\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\",
+        "outputPath": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogbook\\MxLogBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -39,6 +39,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {

@@ -1,0 +1,62 @@
+2024-02-08 08:38:20.217 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-08 08:38:20.239 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-08 08:38:20.239 -08:00 [INF] Hosting environment: Development
+2024-02-08 08:38:20.240 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-08 11:30:58.754 -08:00 [INF] Now listening on: http://localhost:5035
+2024-02-08 11:30:58.779 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-02-08 11:30:58.779 -08:00 [INF] Hosting environment: Development
+2024-02-08 11:30:58.779 -08:00 [INF] Content root path: C:\Users\w_can\OneDrive\Desktop\Projects\NewMxLogBook\MxLogBook\MxLogBook
+2024-02-08 11:31:03.485 -08:00 [WRN] Failed to determine the https port for redirect.
+2024-02-08 11:31:05.237 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 1752.3332 ms
+2024-02-08 11:38:01.254 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 145.2652 ms
+2024-02-08 11:38:21.841 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 29.5162 ms
+2024-02-08 11:38:56.902 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 3.5262 ms
+2024-02-08 11:42:26.579 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 42.5050 ms
+2024-02-08 11:44:06.824 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 8.3528 ms
+2024-02-08 11:44:46.934 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 0.9842 ms
+2024-02-08 11:44:57.371 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 0.9371 ms
+2024-02-08 11:45:27.249 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 0.7897 ms
+2024-02-08 11:45:35.919 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 603.9933 ms
+2024-02-08 11:46:14.763 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 61.9247 ms
+2024-02-08 11:49:44.661 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 91.7843 ms
+2024-02-08 11:51:44.001 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 1.0249 ms
+2024-02-08 11:51:48.088 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 28.4586 ms
+2024-02-08 11:51:57.122 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 47.7760 ms
+2024-02-08 11:51:58.100 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 98.4665 ms
+2024-02-08 12:14:17.011 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 138.1297 ms
+2024-02-08 12:14:17.013 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 30.6226 ms
+2024-02-08 12:16:43.228 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 163.9573 ms
+2024-02-08 12:24:50.323 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 47.3169 ms
+2024-02-08 12:25:09.778 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 107.2167 ms
+2024-02-08 12:51:57.384 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 48.3557 ms
+2024-02-08 12:52:08.970 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 131.2122 ms
+2024-02-08 12:54:51.295 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 11.5199 ms
+2024-02-08 12:55:01.306 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 88.0970 ms
+2024-02-08 12:55:07.349 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 119.1935 ms
+2024-02-08 13:03:25.357 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 12.8924 ms
+2024-02-08 13:03:35.763 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 150.9915 ms
+2024-02-08 13:05:02.101 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 1.3432 ms
+2024-02-08 13:05:14.674 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 78.5831 ms
+2024-02-08 13:05:41.550 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 59.5951 ms
+2024-02-08 13:06:48.961 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 93.7776 ms
+2024-02-08 14:09:17.496 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 40.8796 ms
+2024-02-08 14:11:27.015 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 12.9756 ms
+2024-02-08 14:11:27.223 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 4.2643 ms
+2024-02-08 14:11:27.573 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 3.4652 ms
+2024-02-08 14:11:27.770 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 1.3520 ms
+2024-02-08 14:11:27.937 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 0.6362 ms
+2024-02-08 14:11:28.100 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 5.0011 ms
+2024-02-08 14:11:28.384 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 4.7254 ms
+2024-02-08 14:11:28.596 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 4.0319 ms
+2024-02-08 14:11:28.900 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 2.8476 ms
+2024-02-08 14:11:29.176 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 2.3044 ms
+2024-02-08 14:15:12.256 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 167.7070 ms
+2024-02-08 14:15:12.912 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 72.3898 ms
+2024-02-08 14:15:18.498 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 139.7764 ms
+2024-02-08 14:35:28.179 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 23.0857 ms
+2024-02-08 14:36:45.609 -08:00 [INF] HTTP POST /api/Auth/login responded 400 in 0.5323 ms
+2024-02-08 14:37:51.357 -08:00 [INF] HTTP POST /api/Auth/login responded 401 in 172.1104 ms
+2024-02-08 14:38:11.566 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 167.5100 ms
+2024-02-08 14:39:41.554 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 75.3993 ms
+2024-02-08 14:40:00.777 -08:00 [INF] HTTP POST /api/Auth/login responded 200 in 97.0814 ms
+2024-02-08 14:47:35.728 -08:00 [INF] Application is shutting down...
