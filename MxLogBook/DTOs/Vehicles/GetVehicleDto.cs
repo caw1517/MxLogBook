@@ -10,7 +10,6 @@ namespace Backend.DTOs.Vehicles
         public string? Model { get; set; }
         public int Year { get; set; }
         public int? Mileage { get; set; }
-        public int? Hours { get; set; }
-        public string? Sn { get; set; }
+        public int? Hours { get; set; } 
     }
 }
