@@ -14,7 +14,8 @@ export const Navbar =  async () => {
     <div className="flex justify-between w-screen p-10">
       <div className="flex gap-10">
         <Image src={menu} alt="Burger Menu"/>
-        <Link href="/">MxLogBook</Link>
+
+        <Link href={session ? "/userdashboard" :"/"}>MxLogBook</Link>
       </div>
       <div className="flex gap-10">
         {session ? 

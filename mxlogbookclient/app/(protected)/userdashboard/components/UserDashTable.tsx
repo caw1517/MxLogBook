@@ -49,7 +49,9 @@ const UserDashTable = () => {
             <tbody>
                 {vehicleState.map((vehicle, index) => (
                     <tr key={vehicle.id}>
-                        <td className="text-xl leading-8 font-extralight text-primary-200"><Link href='/'>{`${index + 1}.`}</Link></td>
+                        <td className="text-xl leading-8 font-extralight text-primary-200">
+                            <Link href={{ pathname: `/userdashboard/vehicles/${index + 1}` }}>{`${index + 1}.`}</Link>
+                            </td>
                         <td className="text-xl leading-8 font-extralight">{vehicle.make}</td>
                         <td className="text-xl leading-8 font-extralight">{vehicle.model}</td>
                         <td className="text-xl leading-8 font-extralight">{vehicle.year}</td>
