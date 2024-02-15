@@ -1,7 +1,7 @@
 'use server'
 import { auth } from "@/auth";
 
-export async function GetVehiclesByUser() {
+export async function GetUserVehicles() {
     const session = await auth();
 
     try {

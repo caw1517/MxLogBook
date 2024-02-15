@@ -2,24 +2,30 @@
 import Link from 'next/link';
 import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/app/store/store';
-import { GetVehiclesByUser } from '@/app/api/vehicle/GetUserVehicles/route';
-import { setVehicles } from '@/app/slices/vehicleslice';
+import { setError, setVehicles } from '@/app/slices/vehicleslice';
+import AddNewButton from './AddNewButton';
+import { GetUserVehicles } from '@/app/actions/GetUserVehicles';
 
 const UserDashTable = () => {  
 
+    //Redux
     const dispatch = useAppDispatch();
     const vehicleState =  useAppSelector((state) => state.vehicle.vehicles);
+    const errorState = useAppSelector((state) => state.vehicle.error);
 
+    //Fetch the vehicles on load or any time they change
     useEffect(() => {
         let vehicles: any = [];
         const getVehicle = async () => {
-            vehicles = await GetVehiclesByUser();
+            vehicles = await GetUserVehicles();
         }
 
         getVehicle().then(() => {
             dispatch(setVehicles(vehicles));
-        })
-    }, [])
+        }).catch((e) => {
+            dispatch(setError(e));
+        });
+    }, [dispatch, vehicleState])
 
   return (
     <div className='flex justify-center'>
@@ -56,6 +62,8 @@ const UserDashTable = () => {
                 ))}
             </tbody>
         </table>
+
+        <AddNewButton />
     </div>
   )
 }
