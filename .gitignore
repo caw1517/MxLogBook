@@ -11,8 +11,12 @@
 *.userosscache
 *.sln.docstates
 
+MxLogBook/logs/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+
+MxLogBook/logs
 
 # Build results
 [Dd]ebug/
