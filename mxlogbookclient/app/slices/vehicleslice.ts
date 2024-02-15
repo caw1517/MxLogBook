@@ -11,14 +11,12 @@ interface Vehicle {
 
 export interface IVehicleState {
     vehicles: Vehicle[],
-    loading: boolean,
     error: string | null
 }
 
 //Init state
 const initialState: IVehicleState = {
     vehicles: [],
-    loading: false,
     error: null
 }
 
@@ -29,9 +27,12 @@ export const vehicleSlice = createSlice({
     reducers: {
         setVehicles: (state, action: PayloadAction<Vehicle[]>) =>{
             state.vehicles = action.payload;
+        },
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload;
         }
     },
 })
 
-export const { setVehicles } = vehicleSlice.actions;
+export const { setVehicles, setError } = vehicleSlice.actions;
 export const vehicleReducer = vehicleSlice.reducer;

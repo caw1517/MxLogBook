@@ -4,7 +4,6 @@ import { useAppSelector } from '@/app/store/store';
 import { GetVehicleById } from '@/app/api/vehicle/GetById/route';
 
 const VehicleCard = () => {
-    const vehicleState = useAppSelector((state) => state.vehicle.vehicles);
 
     const fetchVehicle = (e: any) => {
       e.preventDefault();
