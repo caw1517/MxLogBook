@@ -33,15 +33,7 @@ namespace Backend.Data
                     Year = 2018,
                     Mileage = 61000,
                     CreatedOn = DateTime.UtcNow,
-                },
-                new Vehicle
-                {
-                    Id = 2,
-                    Make = "Honda",
-                    Model = "CRF250R",
-                    Year = 2023,
-                    Hours = 20,
-                    CreatedOn = DateTime.UtcNow
+                    UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                 }
             );
 

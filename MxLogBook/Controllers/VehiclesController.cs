@@ -13,7 +13,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class VehiclesController : ControllerBase
     {
         //Private
@@ -33,6 +33,14 @@ namespace Backend.Controllers
         {
             var vehicles = await _vehicleService.GetAllAsync();
             var records = _mapper.Map<List<GetVehicleDto>>(vehicles);
+            return Ok(records);
+        }
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<GetVehicleDetailsDto>>> GetVehiclesByUserId(string userId)
+        {
+            var vehicles = await _vehicleService.GetVehiclesByUserId(userId);
+            var records = _mapper.Map<List<GetVehicleDetailsDto>>(vehicles);
+
             return Ok(records);
         }
 
