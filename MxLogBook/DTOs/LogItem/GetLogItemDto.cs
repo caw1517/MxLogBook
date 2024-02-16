@@ -1,4 +1,5 @@
-﻿using Backend.Models;
+﻿using Backend.DTOs.Auth;
+using Backend.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.DTOs.LogItem
@@ -11,5 +12,9 @@ namespace Backend.DTOs.LogItem
         //Change to Enum Later
         public bool Closed { get; set; }
         public int VehicleId { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? ClosedOn { get; set; }
+        public virtual GetUserBasicDto? User{ get; set; }
+
     }
 }

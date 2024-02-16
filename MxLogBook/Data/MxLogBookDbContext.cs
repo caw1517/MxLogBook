@@ -45,7 +45,8 @@ namespace Backend.Data
                     Discrepency = "Rear right hand tire has slow leak.",
                     Closed = false,
                     CreatedOn = DateTime.UtcNow,
-                    VehicleId = 1
+                    VehicleId = 1,
+                    UserId = "66b55995-d23f-4b07-ab16-6425b63c603d"
                 }
             );
 

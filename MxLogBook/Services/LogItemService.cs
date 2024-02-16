@@ -1,0 +1,36 @@
+﻿using Backend.Data;
+using Backend.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace Backend.Services
+{
+    public class LogItemService : GenericService<LogItem>, ILogItemService
+    {
+        private readonly MxLogBookDbContext _dbContext;
+        public LogItemService(MxLogBookDbContext context) : base(context)
+        {
+            _dbContext = context;
+        }
+
+        public async Task<List<LogItem>> GetAllByVehicleId(int vehicleId)
+        {
+            var logs = await _dbContext.log_items.Include(q => q.User).Where(v => v.VehicleId == vehicleId).ToListAsync();
+
+            if (logs == null)
+                return null;
+
+            return logs;
+        }
+
+        public async Task<LogItem> GetLogItemAsyncById(int id)
+        {
+            //Will return null if value can not be found
+            var res = await _dbContext.log_items.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);
+
+            if (res == null)
+                return null;
+
+            return res;
+        }
+    }
+}

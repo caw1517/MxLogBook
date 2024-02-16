@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;
 using Backend.Models;
-using Backend.DTOs;
 using Backend.DTOs.Vehicles;
 using AutoMapper;
-using Serilog;
 using Backend.Services;
-using Microsoft.AspNetCore.Authorization;
-
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
@@ -122,10 +117,10 @@ namespace Backend.Controllers
         public async Task<IActionResult> DeleteVehicle(int id)
         {
             var vehicle = await _vehicleService.GetAsync(id);
+
             if (vehicle == null)
-            {
                 return NotFound();
-            }
+       
 
             await _vehicleService.DeleteAsync(id);
 

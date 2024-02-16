@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240215185018_LogItemUpdate")]
+    partial class LogItemUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,9 +134,8 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 50, 995, DateTimeKind.Utc).AddTicks(4803),
+                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 17, 966, DateTimeKind.Utc).AddTicks(4545),
                             Discrepency = "Rear right hand tire has slow leak.",
-                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
                         });
                 });
@@ -181,7 +183,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 50, 995, DateTimeKind.Utc).AddTicks(4718),
+                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 17, 966, DateTimeKind.Utc).AddTicks(4460),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -218,13 +220,13 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5b4b0c3e-4221-4465-a70a-bf74133459a1",
+                            Id = "ca2b9f76-9845-4f84-a627-b4950481ddd6",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "398bf48e-7d76-4f42-bdc4-338706d1ff00",
+                            Id = "93d93984-a20f-4925-9a02-702d8c005793",
                             Name = "User",
                             NormalizedName = "USER"
                         });

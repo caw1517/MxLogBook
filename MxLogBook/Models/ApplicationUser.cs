@@ -9,5 +9,7 @@ namespace Backend.Models
 
         //Vehicle Relation
         public virtual IList<Vehicle>? Vehicles { get; set; }
+
+        public virtual IList<LogItem>? LogItems { get; set; } 
     }
 }

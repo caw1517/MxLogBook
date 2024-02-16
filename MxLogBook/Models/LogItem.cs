@@ -12,6 +12,11 @@ namespace Backend.Models
         public DateTime CreatedOn { get; set; }
         public DateTime? ClosedOn { get; set; }
 
+        //User Relation - Act as One To Many
+        [ForeignKey(nameof(UserId))]
+        public string? UserId { get; set; }
+        public ApplicationUser? User { get; set; }
+
         //Vehicle One to Many Relation
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }
