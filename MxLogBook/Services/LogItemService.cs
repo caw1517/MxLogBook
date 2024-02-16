@@ -14,7 +14,7 @@ namespace Backend.Services
 
         public async Task<List<LogItem>> GetAllByVehicleId(int vehicleId)
         {
-            var logs = await _dbContext.log_items.Include(q => q.User).Where(v => v.VehicleId == vehicleId).ToListAsync();
+            var logs = await _dbContext.LogItems.Include(q => q.User).Where(v => v.VehicleId == vehicleId).ToListAsync();
 
             if (logs == null)
                 return null;
@@ -25,12 +25,26 @@ namespace Backend.Services
         public async Task<LogItem> GetLogItemAsyncById(int id)
         {
             //Will return null if value can not be found
-            var res = await _dbContext.log_items.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);
+            var res = await _dbContext.LogItems.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);
 
             if (res == null)
                 return null;
 
             return res;
+        }
+
+        public async Task SetLogItemStatus(int logId, bool status)
+        {
+            //Get the log item
+            var logItem = await GetLogItemAsyncById(logId);
+
+            //Set the values
+            logItem.Closed = status;
+            logItem.ClosedOn = DateTime.UtcNow;
+
+            _dbContext.Update(logItem);
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

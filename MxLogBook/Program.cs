@@ -2,6 +2,7 @@ using Backend.Configurations;
 using Backend.Data;
 using Backend.Models;
 using Backend.Services;
+using Backend.Services.SignOffs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,12 @@ builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILogItemService, LogItemService>();
+builder.Services.AddScoped<ISignOffService, SignOffService>();
+
+//builder.Services.AddControllers().AddJsonOptions(options =>
+//{
+//    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+//});
 
 //Setup JWT
 builder.Services.AddAuthentication(options =>

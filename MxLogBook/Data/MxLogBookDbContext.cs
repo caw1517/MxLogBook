@@ -15,8 +15,9 @@ namespace Backend.Data
         }
 
         //Create a DB Set
-        public DbSet<LogItem> log_items { get; set; }
-        public DbSet<Vehicle> vehicles { get; set; }
+        public DbSet<LogItem> LogItems { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<SignOff> SignOffs { get; set; }
 
         //Seed Temp Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -12,7 +12,6 @@ namespace Backend.DTOs.LogItem
         //Change to Enum Later
         public bool Closed { get; set; } = false;
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
-        [Required]
         public string? UserId { get; set; }
         [Required]
         public int VehicleId { get; set; }

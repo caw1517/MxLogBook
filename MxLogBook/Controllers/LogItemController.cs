@@ -3,13 +3,16 @@ using Backend.DTOs.LogItem;
 using Backend.DTOs.Vehicles;
 using Backend.Models;
 using Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LogItemController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -21,7 +24,7 @@ namespace Backend.Controllers
             _logService = logService;
         }
 
-        //GET: All Log Items - Shouldn't be used, only to be used by admin
+        //GET: ALL LOG ITEMS - SHOULDN'T BE USED, ONLY TO BE USED BY ADMIN
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetAllLogsDto>>> GetLogItems()
         {
@@ -30,7 +33,7 @@ namespace Backend.Controllers
             return Ok(records);
         }
 
-        //GET: Single Log Item - Used in the context of opening a single log item
+        //GET: SINGLE LOG ITEM - USED IN THE CONTEXT OF OPENING A SINGLE LOG ITEM
         [HttpGet("{id}")]
         public async Task<ActionResult<GetLogItemDto>> GetLogItemById(int id)
         {
@@ -47,7 +50,7 @@ namespace Backend.Controllers
 
         }
 
-        //GET: Multiple Items Associated with Specific Vehicle - Used by people that own vehicle / have access via company
+        //GET: MULTIPLE ITEMS ASSOCIATED WITH SPECIFIC VEHICLE - USED BY PEOPLE THAT OWN VEHICLE / HAVE ACCESS VIA COMPANY
         [HttpGet("logs/{vehicleId}")]
         public async Task<ActionResult<IEnumerable<GetLogItemDto>>> GetLogItemByVehicle(int vehicleId)
         {
@@ -57,10 +60,18 @@ namespace Backend.Controllers
             return Ok(records);
         }
 
-        //POST - Create a new log, can be used by anyone authorized.
+        //POST: CREATE A NEW LOG, CAN BE USED BY ANYONE AUTHORIZED.
         [HttpPost]
         public async Task<ActionResult<CreateLogItemDto>> CreateLogItem(CreateLogItemDto newLogItem)
         {
+            //Get the user id from the header
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity.FindFirst("uid").Value;
+
+            //Add that as the user's Id
+            newLogItem.UserId = userIdClaim;
+
+            //Map
             var logItem = _mapper.Map<LogItem>(newLogItem);
             
             await _logService.AddAsync(logItem);
@@ -68,7 +79,7 @@ namespace Backend.Controllers
             return CreatedAtAction(nameof(CreateLogItem), logItem);
         }
 
-        //PUT - Updating a log, only to be used by admins. Logs should stay permanent, edits to discrepencies should take place as a sign off or get an admin to update.
+        //PUT: UPDATING A LOG, ONLY TO BE USED BY ADMINS. LOGS SHOULD STAY PERMANENT, EDITS TO DISCREPENCIES SHOULD TAKE PLACE AS A SIGN OFF OR GET AN ADMIN TO UPDATE.
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateLogItem(int id, UpdateLogItemDto updatedLogItem)
         {
@@ -115,7 +126,7 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        //DELETE - Delete a log, records should be permanent. Only to be used by admin.
+        //DELETE - DELETE A LOG, RECORDS SHOULD BE PERMANENT. ONLY TO BE USED BY ADMIN.
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLogItem(int id)
         {

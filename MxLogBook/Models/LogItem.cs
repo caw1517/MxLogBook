@@ -21,5 +21,8 @@ namespace Backend.Models
         [ForeignKey(nameof(VehicleId))]
         public int VehicleId { get; set; }
         public  Vehicle? Vehicle { get; set; }
+
+        //Sign Off Relation
+        public virtual IList<SignOff> SignOffs { get; set; }
     }
 }

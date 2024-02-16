@@ -7,5 +7,6 @@ namespace Backend.Services
 
         Task<LogItem> GetLogItemAsyncById(int id);
         Task<List<LogItem>> GetAllByVehicleId(int vehicleId);
+        Task SetLogItemStatus(int logId, bool status);
     }
 }

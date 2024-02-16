@@ -11,5 +11,6 @@ namespace Backend.Models
         public virtual IList<Vehicle>? Vehicles { get; set; }
 
         public virtual IList<LogItem>? LogItems { get; set; } 
+        public virtual IList<SignOff>? SignOffs { get; set; }
     }
 }
