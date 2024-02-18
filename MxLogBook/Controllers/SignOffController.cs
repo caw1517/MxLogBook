@@ -26,24 +26,40 @@ namespace Backend.Controllers
             _signOffService = signOffService;
         }
 
+        //GET: GETS SIGNLE SIGN OFF BY ID - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
         [HttpGet("{id}")]
         public async Task<ActionResult<GetSignOffDto>> GetSignOff(int id)
         {
             var signOff = await _signOffService.GetAsync(id);
 
             if (signOff == null)
-            {
                 return NotFound();
-            }
 
             var result = _mapper.Map<GetSignOffDto>(signOff);
 
             return Ok(result);
         }
 
+        //GET: GETS ALL SIGN OFFS WITH ASSOCIATED LOG - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
+        [HttpGet("signoffbylog/{logId}")]
+        [Authorize]
+        public async Task<ActionResult<List<GetSignOffDetailsDto>>> GetSignOffByLog(int logId)
+        {
+            var signOffs = await _signOffService.GetSignOffFromLog(logId);
+
+            if (signOffs == null)
+                return NotFound();
+
+            var result = _mapper.Map<List<GetSignOffDetailsDto>>(signOffs);
+            return Ok(result);
+        }
+
+        //GET: GETS ALL SIGN OFFS WITH ASSOCIATED TASK - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
+
+        //POST: GENERATES A NEW SIGN OFF - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
         [HttpPost("{logId}")]
         [Authorize]
-        public async Task<ActionResult<SignOff>> CreateNewSignOff(int logId, NewSignOffDto newSignOff)
+        public async Task<ActionResult<NewSignOffDto>> CreateNewSignOff(int logId, NewSignOffDto newSignOff)
         {
             //Make sure user owns vehicle / is in company that owns it
             //Get the user id from the header

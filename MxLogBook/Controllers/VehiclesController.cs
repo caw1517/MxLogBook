@@ -25,7 +25,7 @@ namespace Backend.Controllers
             _mapper = mapper;
         }
 
-        // GET: ADMIN ONLY
+        // GET: ADMIN ONLY - THINK ABOUT DELETING
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetVehicleDto>>> GetVehicles()
         {

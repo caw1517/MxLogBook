@@ -31,6 +31,7 @@ namespace Backend.Configurations
             //Sign Off Maps
             CreateMap<SignOff, NewSignOffDto>().ReverseMap();
             CreateMap<SignOff, GetSignOffDto>().ReverseMap();
+            CreateMap<SignOff, GetSignOffDetailsDto>().ReverseMap();
         }
     }
 }

@@ -12,5 +12,15 @@ namespace Backend.Services.SignOffs
         {
             _dbContext = dbContext;
         }
+
+        public async Task<List<SignOff>> GetSignOffFromLog(int logId)
+        {
+            var res = await _dbContext.SignOffs.Include(q => q.User).Where(s => s.LogId == logId).ToListAsync();
+
+            if (res.Count <= 0)
+                return null;
+
+            return res;
+        }
     }
 }

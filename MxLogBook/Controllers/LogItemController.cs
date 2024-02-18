@@ -24,7 +24,7 @@ namespace Backend.Controllers
             _logService = logService;
         }
 
-        //GET: ALL LOG ITEMS - SHOULDN'T BE USED, ONLY TO BE USED BY ADMIN
+        //GET: ALL LOG ITEMS - SHOULDN'T BE USED, ONLY TO BE USED BY ADMIN - THINK ABOUT DELETING
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetAllLogsDto>>> GetLogItems()
         {
