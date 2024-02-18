@@ -11,6 +11,8 @@ namespace Backend.DTOs.Vehicles
         public string? Model { get; set; }
         [Required]
         public int Year { get; set; }
+        [Required]
+        public string? UserId { get; set; }
         public int? Mileage { get; set; }
         public int? Hours { get; set; }
          

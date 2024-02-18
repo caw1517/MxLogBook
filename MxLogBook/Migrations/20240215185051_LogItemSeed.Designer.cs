@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240215185051_LogItemSeed")]
+    partial class LogItemSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,52 +127,18 @@ namespace Backend.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("LogItems");
+                    b.ToTable("log_items");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5986),
+                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 50, 995, DateTimeKind.Utc).AddTicks(4803),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
                         });
-                });
-
-            modelBuilder.Entity("Backend.Models.SignOff", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CompletedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("CompletesItem")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("LogId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("WorkPerformed")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LogId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("SignOffs");
                 });
 
             modelBuilder.Entity("Backend.Models.Vehicle", b =>
@@ -209,13 +178,13 @@ namespace Backend.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("vehicles");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5865),
+                            CreatedOn = new DateTime(2024, 2, 15, 18, 50, 50, 995, DateTimeKind.Utc).AddTicks(4718),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -252,13 +221,13 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3fff9ff-1035-4262-b317-a6873c13d23d",
+                            Id = "5b4b0c3e-4221-4465-a70a-bf74133459a1",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "a98e13d7-a7e9-49c0-af67-5d4217088fc8",
+                            Id = "398bf48e-7d76-4f42-bdc4-338706d1ff00",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -387,25 +356,6 @@ namespace Backend.Migrations
                     b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("Backend.Models.SignOff", b =>
-                {
-                    b.HasOne("Backend.Models.LogItem", "Log")
-                        .WithMany("SignOffs")
-                        .HasForeignKey("LogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Models.ApplicationUser", "User")
-                        .WithMany("SignOffs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Log");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Backend.Models.Vehicle", b =>
                 {
                     b.HasOne("Backend.Models.ApplicationUser", "ApplicationUser")
@@ -470,14 +420,7 @@ namespace Backend.Migrations
                 {
                     b.Navigation("LogItems");
 
-                    b.Navigation("SignOffs");
-
                     b.Navigation("Vehicles");
-                });
-
-            modelBuilder.Entity("Backend.Models.LogItem", b =>
-                {
-                    b.Navigation("SignOffs");
                 });
 
             modelBuilder.Entity("Backend.Models.Vehicle", b =>

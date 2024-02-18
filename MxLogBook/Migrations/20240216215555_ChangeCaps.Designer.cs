@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240216215555_ChangeCaps")]
+    partial class ChangeCaps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +134,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5986),
+                            CreatedOn = new DateTime(2024, 2, 16, 21, 55, 54, 560, DateTimeKind.Utc).AddTicks(6748),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
@@ -155,8 +158,10 @@ namespace Backend.Migrations
                     b.Property<int>("LogId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("text");
 
                     b.Property<string>("WorkPerformed")
@@ -167,7 +172,7 @@ namespace Backend.Migrations
 
                     b.HasIndex("LogId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("SignOffs");
                 });
@@ -215,7 +220,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5865),
+                            CreatedOn = new DateTime(2024, 2, 16, 21, 55, 54, 560, DateTimeKind.Utc).AddTicks(6627),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -252,13 +257,13 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3fff9ff-1035-4262-b317-a6873c13d23d",
+                            Id = "f61fcb34-5394-48bd-8caa-a25cc6d6d71a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "a98e13d7-a7e9-49c0-af67-5d4217088fc8",
+                            Id = "fcad6f7b-9245-40b7-86eb-25e55332612a",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -390,16 +395,14 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.SignOff", b =>
                 {
                     b.HasOne("Backend.Models.LogItem", "Log")
-                        .WithMany("SignOffs")
+                        .WithMany()
                         .HasForeignKey("LogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Backend.Models.ApplicationUser", "User")
-                        .WithMany("SignOffs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Log");
 
@@ -470,14 +473,7 @@ namespace Backend.Migrations
                 {
                     b.Navigation("LogItems");
 
-                    b.Navigation("SignOffs");
-
                     b.Navigation("Vehicles");
-                });
-
-            modelBuilder.Entity("Backend.Models.LogItem", b =>
-                {
-                    b.Navigation("SignOffs");
                 });
 
             modelBuilder.Entity("Backend.Models.Vehicle", b =>

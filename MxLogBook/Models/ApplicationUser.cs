@@ -6,5 +6,11 @@ namespace Backend.Models
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set;}
+
+        //Vehicle Relation
+        public virtual IList<Vehicle>? Vehicles { get; set; }
+
+        public virtual IList<LogItem>? LogItems { get; set; } 
+        public virtual IList<SignOff>? SignOffs { get; set; }
     }
 }

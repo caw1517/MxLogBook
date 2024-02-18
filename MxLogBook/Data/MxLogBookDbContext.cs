@@ -15,8 +15,9 @@ namespace Backend.Data
         }
 
         //Create a DB Set
-        public DbSet<LogItem> log_items { get; set; }
-        public DbSet<Vehicle> vehicles { get; set; }
+        public DbSet<LogItem> LogItems { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<SignOff> SignOffs { get; set; }
 
         //Seed Temp Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,15 +34,7 @@ namespace Backend.Data
                     Year = 2018,
                     Mileage = 61000,
                     CreatedOn = DateTime.UtcNow,
-                },
-                new Vehicle
-                {
-                    Id = 2,
-                    Make = "Honda",
-                    Model = "CRF250R",
-                    Year = 2023,
-                    Hours = 20,
-                    CreatedOn = DateTime.UtcNow
+                    UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                 }
             );
 
@@ -53,7 +46,8 @@ namespace Backend.Data
                     Discrepency = "Rear right hand tire has slow leak.",
                     Closed = false,
                     CreatedOn = DateTime.UtcNow,
-                    VehicleId = 1
+                    VehicleId = 1,
+                    UserId = "66b55995-d23f-4b07-ab16-6425b63c603d"
                 }
             );
 

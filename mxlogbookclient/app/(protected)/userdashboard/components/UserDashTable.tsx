@@ -25,7 +25,7 @@ const UserDashTable = () => {
         }).catch((e) => {
             dispatch(setError(e));
         });
-    }, [dispatch, vehicleState])
+    }, [dispatch])
 
   return (
     <div className='flex justify-center'>

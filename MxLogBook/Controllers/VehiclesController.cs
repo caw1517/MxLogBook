@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;
 using Backend.Models;
-using Backend.DTOs;
 using Backend.DTOs.Vehicles;
 using AutoMapper;
-using Serilog;
 using Backend.Services;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
@@ -27,22 +25,34 @@ namespace Backend.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Vehicles
+        // GET: ADMIN ONLY - THINK ABOUT DELETING
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetVehicleDto>>> GetVehicles()
         {
+
             var vehicles = await _vehicleService.GetAllAsync();
             var records = _mapper.Map<List<GetVehicleDto>>(vehicles);
             return Ok(records);
         }
 
-        // GET: api/Vehicles/5
+        //GET: USED BY FRONTEND TO GET A SPECIFIC USERS VEHICLE
+        [HttpGet("user/")]
+        public async Task<ActionResult<IEnumerable<GetVehicleDetailsDto>>> GetVehiclesByUserId()
+        {
+            //Get the user id from the header
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity.FindFirst("uid").Value;
+
+            var vehicles = await _vehicleService.GetVehiclesByUserId(userIdClaim);
+            var records = _mapper.Map<List<GetVehicleDetailsDto>>(vehicles);
+
+            return Ok(records);
+        }
+
+        // GET: USED BY FRONTEND TO GET A SPECIFIC LOG ITEM
         [HttpGet("{id}")]
         public async Task<ActionResult<GetVehicleDetailsDto>> GetVehicle(int id)
         {
-            //Include the hotels and search based off of Id's
-            //var vehicle = await _vehicleService.GetAsync(id);
-            //var vehicle = await _context.vehicles.Include(q => q.LogItems).FirstOrDefaultAsync(q => q.Id == id);
             var vehicle = await _vehicleService.GetDetails(id);
 
             if (vehicle == null)
@@ -55,7 +65,7 @@ namespace Backend.Controllers
             return Ok(result);
         }
 
-        // PUT: api/Vehicles/5
+        // PUT: USED TO UPDATE VEHICLE OVERALL - ITEMS LIKE MILEAGE SHOULD BE HANDLED BY FUNCTIONS LIKE SIGNOFFS
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateVehicle(int id, UpdateVehicleDto updatedVehicle)
         {
@@ -95,7 +105,7 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Vehicles
+        // POST: CREATE A NEW VEHICLE
         [HttpPost]
         public async Task<ActionResult<Vehicle>> AddVehicle(AddVehicleDto newVehicle)
         {
@@ -109,15 +119,15 @@ namespace Backend.Controllers
             return CreatedAtAction("GetVehicle", new { id = vehicle.Id }, vehicle);
         }
 
-        // DELETE: api/Vehicles/5
+        // DELETE: DELETE A VEHICLE
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
             var vehicle = await _vehicleService.GetAsync(id);
+
             if (vehicle == null)
-            {
                 return NotFound();
-            }
+       
 
             await _vehicleService.DeleteAsync(id);
 

@@ -16,7 +16,22 @@ namespace Backend.Services
         public async Task<Vehicle> GetDetails(int id)
         {
             //Will return null if value can not be found
-            return await _dbContext.vehicles.Include(q => q.LogItems).FirstOrDefaultAsync(q => q.Id == id);
+            var res = await _dbContext.Vehicles.Include(q => q.LogItems).FirstOrDefaultAsync(q => q.Id == id);
+            
+            if (res == null)
+                return null;
+
+            return res;
+        }
+
+        public async Task<List<Vehicle>> GetVehiclesByUserId(string userId)
+        {
+            var res = await _dbContext.Vehicles.Include(q => q.LogItems).Where(v => v.UserId == userId).ToListAsync();
+
+            if (res == null)
+                return null;
+
+            return res;
         }
     }
 }
