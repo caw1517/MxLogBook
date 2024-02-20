@@ -39,15 +39,15 @@ const FormComp = () => {
     }
 
   return (
-    <form onSubmit={HandleSubmit}  className="className='w-full flex flex-col items-center gap-4">
-        <input type="text" placeholder='Email' name='email' className='w-[328px] bg-inherit border-gray-300 border-[1px] h-[48px] p-2 focus:outline-none'/>
-        <input type="text" placeholder='Password' name="password" className='w-[328px] bg-inherit border-gray-300 border-[1px] h-[48px] p-2 focus:outline-none'/>
-        <div className="flex justify-between w-[328px] -m-3">
-            <p>Forgot Password</p>
+    <form onSubmit={HandleSubmit}  className="className='w-full flex flex-col items-start gap-8 my-8">
+        <input type="text" placeholder='Email' name='email' className='w-full bg-inherit border-gray-300 border-[1px] h-[36px] rounded-lg p-2 focus:outline-none'/>
+        <input type="text" placeholder='Password' name="password" className='w-full bg-inherit border-gray-300 border-[1px] h-[36px] rounded-lg p-2 focus:outline-none'/>
+        <div className="flex justify-between w-full -top-6 relative">
             <p>Create Account</p>
+            <p className='text-primary-200'>Forgot Password?</p>
         </div>
 
-        <button className='w-[328px] bg-primary-200 h-[48px] m-8' type='submit' >Sign In</button>
+        <button className='w-full bg-primary-200 h-[48px] relative -top-6' type='submit' >Sign In</button>
     </form>
   )
 }
