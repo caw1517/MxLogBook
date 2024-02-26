@@ -17,6 +17,8 @@ const config: Config = {
         "dark-50": "#121212",
         "dark-200": "#1A1A1A",
         "primary-200": "#7D49F8",
+        "bg-dark": "#25293C",
+        "bg-light": "#2F3349"
       }
     },
   },
