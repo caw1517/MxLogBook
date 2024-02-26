@@ -11,9 +11,9 @@ const SignIn = () => {
 
   return (
     <div className=" w-full h-screen relative flex justify-end items-center">
-      <div className='w-2/3 h-[90%] bg-bg-dark ml-10 rounded-2xl flex justify-center items-center'>
+      <div className='w-2/3 h-[90%] bg-bg-light ml-10 rounded-2xl flex justify-center items-center'>
         <div className='h-[350px] w-[350px] rounded-[50%] border-primary-200 border-2 p-4'>
-          <div className='bg-bg-light w-full h-full rounded-[50%] flex justify-center items-center'>
+          <div className='bg-bg-dark w-full h-full rounded-[50%] flex justify-center items-center'>
             <Image src={Airplane} alt='Airplane' height={325} />
           </div>
         </div>
