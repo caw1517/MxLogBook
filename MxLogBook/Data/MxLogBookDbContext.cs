@@ -18,11 +18,17 @@ namespace Backend.Data
         public DbSet<LogItem> LogItems { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<SignOff> SignOffs { get; set; }
+        public DbSet<Company> Companys { get; set; }
 
         //Seed Temp Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(x => x.ApplicationUsers)
+                .WithMany(y => y.Companies)
+                .UsingEntity(j => j.ToTable("CompanyUser"));
 
             //Temp Vehicles
             modelBuilder.Entity<Vehicle>().HasData(
@@ -62,6 +68,16 @@ namespace Backend.Data
                 {
                     Name = "User",
                     NormalizedName = "USER"
+                },
+                new IdentityRole
+                {
+                    Name = "CompanyUser",
+                    NormalizedName = "COMPANYUSER"
+                },
+                new IdentityRole
+                {
+                    Name = "CompanyAdmin",
+                    NormalizedName = "COMPANYADMIN"
                 }
             );
         }

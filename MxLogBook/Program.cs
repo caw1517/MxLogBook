@@ -2,11 +2,13 @@ using Backend.Configurations;
 using Backend.Data;
 using Backend.Models;
 using Backend.Services;
+using Backend.Services.Companies;
 using Backend.Services.SignOffs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
 
@@ -34,7 +36,32 @@ builder.Services.AddIdentityCore<ApplicationUser>()
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new String[] { }
+        }
+    });
+});
 
 //Configure Cors
 builder.Services.AddCors(options => 
@@ -56,6 +83,7 @@ builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILogItemService, LogItemService>();
 builder.Services.AddScoped<ISignOffService, SignOffService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 //builder.Services.AddControllers().AddJsonOptions(options =>
 //{

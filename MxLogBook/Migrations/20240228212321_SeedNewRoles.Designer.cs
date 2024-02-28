@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240228212321_SeedNewRoles")]
+    partial class SeedNewRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ApplicationUserCompany", b =>
-                {
-                    b.Property<string>("ApplicationUsersId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("CompaniesId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ApplicationUsersId", "CompaniesId");
-
-                    b.HasIndex("CompaniesId");
-
-                    b.ToTable("CompanyUser", (string)null);
-                });
 
             modelBuilder.Entity("Backend.Models.ApplicationUser", b =>
                 {
@@ -107,22 +95,6 @@ namespace Backend.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Backend.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Companys");
-                });
-
             modelBuilder.Entity("Backend.Models.LogItem", b =>
                 {
                     b.Property<int>("Id")
@@ -162,7 +134,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 28, 21, 51, 22, 401, DateTimeKind.Utc).AddTicks(5132),
+                            CreatedOn = new DateTime(2024, 2, 28, 21, 23, 20, 668, DateTimeKind.Utc).AddTicks(9476),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
@@ -244,7 +216,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 28, 21, 51, 22, 401, DateTimeKind.Utc).AddTicks(5024),
+                            CreatedOn = new DateTime(2024, 2, 28, 21, 23, 20, 668, DateTimeKind.Utc).AddTicks(9393),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -281,25 +253,25 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "53d56191-929c-497e-8ef6-124f2872e5c1",
+                            Id = "e1a8f6f9-2c56-49af-9eab-5f7ed99447ab",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "dbd028ff-fa3a-429e-ab71-0c577a170c25",
+                            Id = "dca342d5-c876-48b5-994b-e6cc16b9fa69",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "81113bba-860e-4dd6-adb2-393fa249735c",
+                            Id = "5735e1a9-0d7e-4420-984c-c5f4e167a405",
                             Name = "CompanyUser",
                             NormalizedName = "COMPANYUSER"
                         },
                         new
                         {
-                            Id = "b2a83f2a-74c5-4645-9cfb-98864126e9a0",
+                            Id = "f763167c-f7c3-4197-bb4b-227f6971e7f3",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         });
@@ -409,21 +381,6 @@ namespace Backend.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ApplicationUserCompany", b =>
-                {
-                    b.HasOne("Backend.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("ApplicationUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Models.Company", null)
-                        .WithMany()
-                        .HasForeignKey("CompaniesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Backend.Models.LogItem", b =>

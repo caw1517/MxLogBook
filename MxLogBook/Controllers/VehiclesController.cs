@@ -27,6 +27,7 @@ namespace Backend.Controllers
 
         // GET: ADMIN ONLY - THINK ABOUT DELETING
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<IEnumerable<GetVehicleDto>>> GetVehicles()
         {
 
@@ -43,9 +44,11 @@ namespace Backend.Controllers
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             var userIdClaim = identity.FindFirst("uid").Value;
 
+            //Get the vehicles
             var vehicles = await _vehicleService.GetVehiclesByUserId(userIdClaim);
             var records = _mapper.Map<List<GetVehicleDetailsDto>>(vehicles);
 
+            //Return Ok
             return Ok(records);
         }
 
