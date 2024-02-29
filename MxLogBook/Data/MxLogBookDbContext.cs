@@ -21,16 +21,36 @@ namespace Backend.Data
         public DbSet<SignOff> SignOffs { get; set; }
         public DbSet<Company> Companys { get; set; }
         public DbSet<InviteToken> Invites { get; set; }
+        public DbSet<CompanyUserRoles> CompanyUserRoles { get; set; }
+        public DbSet<Roles> CompanyRoles { get; set; }
 
         //Seed Temp Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Company>()
-                .HasMany(x => x.ApplicationUsers)
-                .WithMany(y => y.Companies)
-                .UsingEntity(j => j.ToTable("CompanyUser"));
+            modelBuilder.Entity<CompanyUserRoles>()
+                .HasKey(c => new { c.UserId, c.CompanyId, c.RoleId });
+
+            modelBuilder.Entity<CompanyUserRoles>()
+                .HasOne(c => c.ApplicationUser)
+                .WithMany(u => u.CompanyUserRoles)
+                .HasForeignKey(c => c.UserId);
+
+            modelBuilder.Entity<CompanyUserRoles>()
+                .HasOne(c => c.Company)
+                .WithMany(u => u.CompanyUserRoles)
+                .HasForeignKey(c => c.CompanyId);
+
+            modelBuilder.Entity<CompanyUserRoles>()
+                .HasOne(c => c.Role)
+                .WithMany(u => u.CompanyUserRoles)
+                .HasForeignKey(c => c.RoleId);
+
+            //modelBuilder.Entity<Company>()
+            //    .HasMany(x => x.ApplicationUsers)
+            //    .WithMany(y => y.Companies)
+            //    .UsingEntity(j => j.ToTable("CompanyUser"));
 
             //Temp Vehicles
             modelBuilder.Entity<Vehicle>().HasData(

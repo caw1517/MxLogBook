@@ -15,11 +15,6 @@ namespace Backend.Models
         public virtual IList<SignOff>? SignOffs { get; set; }
         
         //Many - Many
-        public virtual IList<Company> Companies { get; set; }
-
-        public ApplicationUser()
-        {
-            Companies = new List<Company>();
-        }
+        public virtual IList<CompanyUserRoles> CompanyUserRoles { get; set; } = new List<CompanyUserRoles>();
     }
 }

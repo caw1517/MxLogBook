@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229205452_DbSetChange")]
+    partial class DbSetChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,7 +178,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 29, 21, 19, 5, 358, DateTimeKind.Utc).AddTicks(3622),
+                            CreatedOn = new DateTime(2024, 2, 29, 20, 54, 51, 915, DateTimeKind.Utc).AddTicks(2338),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
@@ -215,7 +218,7 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CompanyRoles");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Backend.Models.SignOff", b =>
@@ -293,7 +296,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 29, 21, 19, 5, 358, DateTimeKind.Utc).AddTicks(3516),
+                            CreatedOn = new DateTime(2024, 2, 29, 20, 54, 51, 915, DateTimeKind.Utc).AddTicks(2240),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -330,25 +333,25 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7a7ac33b-728e-4b31-a546-bdbcb6262e26",
+                            Id = "382eee70-bc51-4ff7-beae-b6483101a44b",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "3bdd3dc7-44cd-4d9d-9e8b-3cce5c87542a",
+                            Id = "0503f759-0b07-40f7-bfec-e2231c6057f5",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "8c9001c5-0c27-431a-87ec-b614ae4c09f9",
+                            Id = "787e99be-374c-4404-aa78-d8394b69fa76",
                             Name = "CompanyUser",
                             NormalizedName = "COMPANYUSER"
                         },
                         new
                         {
-                            Id = "b2d84e88-1b2c-454e-abb3-d7ceef33b6e5",
+                            Id = "49e5fc5f-3925-407b-af8c-cd030ce439e2",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         });
