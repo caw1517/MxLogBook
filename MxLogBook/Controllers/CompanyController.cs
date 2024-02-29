@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Services.Companies;
 using Backend.DTOs.Company;
+using System.Security.Claims;
+using Backend.Services;
 
 namespace Backend.Controllers
 {
@@ -14,10 +16,12 @@ namespace Backend.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICompanyService _companyService;
+        private readonly IAuthService _authService;
 
-        public CompanyController(IMapper mapper, ICompanyService companyService)
+        public CompanyController(IMapper mapper, ICompanyService companyService, IAuthService authService)
         {
             _mapper = mapper;
+            _authService = authService;
             _companyService = companyService;
         }
 
@@ -54,14 +58,41 @@ namespace Backend.Controllers
         }
 
         //POST: SEND USER INVITE TO COMPANY - COMPANY ADMIN
-        /*
-         
-        //
-         
-         */
+        [HttpPost("/invite")]
+        [Authorize(Roles = "Administrator,CompanyAdmin")]
+        public async Task<ActionResult<GetInviteTokenDto>> CreateInviteToken(CreateInviteTokenDto newInvite)
+        {
+            //Verify user exists
+            bool user = await _authService.UserExists(newInvite.UserId);
+            if (!user)
+                return NotFound("User not found");
+
+            //Map the invite dto
+            var invite = _mapper.Map<InviteToken>(newInvite);
+
+            //Create the token in db
+            await _companyService.CreateInviteToken(invite);
+
+            //ADD - Map the return to a get token
+            var res = _mapper.Map<GetInviteTokenDto>(invite);
+
+            //Return
+            return Ok(res);
+            
+        }
 
 
         //POST: ACCEPT INVITE FOR COMPANY - ANY USER
+        [HttpPost("/acceptInvite")]
+        public async Task<ActionResult> AcceptInvite(AcceptInviteDto InviteToken)
+        {
+            var res = await _companyService.AcceptInviteToken(InviteToken);
+
+            if (res == true)
+                return Ok("Company Added");
+
+            return BadRequest();
+        }
 
         //PUT: UPDATE COMAPNY - COMPANY ADMIN
 

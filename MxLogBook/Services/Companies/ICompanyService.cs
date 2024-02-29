@@ -1,4 +1,5 @@
-﻿using Backend.Models;
+﻿using Backend.DTOs.Company;
+using Backend.Models;
 
 namespace Backend.Services.Companies
 {
@@ -6,5 +7,7 @@ namespace Backend.Services.Companies
     {
         Task<List<Company>> GetAll();
         Task<Company> GetById(int id);
+        Task<InviteToken> CreateInviteToken(InviteToken inviteToken);
+        Task<bool> AcceptInviteToken(AcceptInviteDto inviteToken);
     }
 }

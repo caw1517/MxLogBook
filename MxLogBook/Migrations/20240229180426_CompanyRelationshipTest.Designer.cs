@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229180426_CompanyRelationshipTest")]
+    partial class CompanyRelationshipTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,7 +193,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9994),
+                            CreatedOn = new DateTime(2024, 2, 29, 18, 4, 26, 114, DateTimeKind.Utc).AddTicks(7230),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
@@ -272,7 +275,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9905),
+                            CreatedOn = new DateTime(2024, 2, 29, 18, 4, 26, 114, DateTimeKind.Utc).AddTicks(7147),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -309,25 +312,25 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b9a68ac9-f3a2-4ef6-a7f5-a76fa69e7b84",
+                            Id = "0e1293cb-bf74-4d4a-bb1a-a19ef5e2a19e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "65f12336-1252-4a50-9a68-b3ddb1e900de",
+                            Id = "02425bb9-9e06-4eeb-b868-9dbe05099af6",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6003d622-2f59-488f-af20-131ee6380a05",
+                            Id = "641abba5-ea43-4eb2-adb4-955f6380dd1f",
                             Name = "CompanyUser",
                             NormalizedName = "COMPANYUSER"
                         },
                         new
                         {
-                            Id = "55ada520-676a-451e-a05c-ea6fbb2900e4",
+                            Id = "5b18cf1a-506f-41cc-84f2-1d1e57fe2c2c",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         });

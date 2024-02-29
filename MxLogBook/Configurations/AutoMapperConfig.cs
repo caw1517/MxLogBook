@@ -5,7 +5,6 @@ using Backend.DTOs.LogItem;
 using Backend.DTOs.SignOff;
 using Backend.DTOs.Vehicles;
 using Backend.Models;
-using System.Configuration;
 
 namespace Backend.Configurations
 {
@@ -37,6 +36,9 @@ namespace Backend.Configurations
             //Company
             CreateMap<Company, GetCompanyDto>().ReverseMap();
             CreateMap<Company, CreateCompanyDto>().ReverseMap();
+            CreateMap<InviteToken, CreateInviteTokenDto>().ReverseMap();
+            CreateMap<InviteToken, GetInviteTokenDto>().ReverseMap();
+            CreateMap<InviteToken, AcceptInviteDto>().ReverseMap();
         }
     }
 }

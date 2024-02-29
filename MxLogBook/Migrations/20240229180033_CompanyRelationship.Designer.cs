@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229180033_CompanyRelationship")]
+    partial class CompanyRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ApplicationUserCompany", b =>
-                {
-                    b.Property<string>("ApplicationUsersId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("CompaniesId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ApplicationUsersId", "CompaniesId");
-
-                    b.HasIndex("CompaniesId");
-
-                    b.ToTable("CompanyUser", (string)null);
-                });
 
             modelBuilder.Entity("Backend.Models.ApplicationUser", b =>
                 {
@@ -190,11 +178,26 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9994),
+                            CreatedOn = new DateTime(2024, 2, 29, 18, 0, 33, 453, DateTimeKind.Utc).AddTicks(463),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
                         });
+                });
+
+            modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUser", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId", "CompanyId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("CompanyUser");
                 });
 
             modelBuilder.Entity("Backend.Models.SignOff", b =>
@@ -272,7 +275,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9905),
+                            CreatedOn = new DateTime(2024, 2, 29, 18, 0, 33, 453, DateTimeKind.Utc).AddTicks(349),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -309,25 +312,25 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b9a68ac9-f3a2-4ef6-a7f5-a76fa69e7b84",
+                            Id = "159a5992-4000-425a-9dc0-8e54620d9dd7",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "65f12336-1252-4a50-9a68-b3ddb1e900de",
+                            Id = "fb0eb9ee-2503-4252-9781-40b81a5d5b0c",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6003d622-2f59-488f-af20-131ee6380a05",
+                            Id = "46ff373a-02b6-4019-8c10-01fca6360e30",
                             Name = "CompanyUser",
                             NormalizedName = "COMPANYUSER"
                         },
                         new
                         {
-                            Id = "55ada520-676a-451e-a05c-ea6fbb2900e4",
+                            Id = "3cd12bd6-6611-4983-bc22-54715c8f099b",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         });
@@ -439,21 +442,6 @@ namespace Backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ApplicationUserCompany", b =>
-                {
-                    b.HasOne("Backend.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("ApplicationUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Backend.Models.Company", null)
-                        .WithMany()
-                        .HasForeignKey("CompaniesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Backend.Models.LogItem", b =>
                 {
                     b.HasOne("Backend.Models.ApplicationUser", "User")
@@ -469,6 +457,25 @@ namespace Backend.Migrations
                     b.Navigation("User");
 
                     b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUser", b =>
+                {
+                    b.HasOne("Backend.Models.Company", "Company")
+                        .WithMany("CompanyUsers")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("CompanyUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Backend.Models.SignOff", b =>
@@ -550,11 +557,18 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("CompanyUsers");
+
                     b.Navigation("LogItems");
 
                     b.Navigation("SignOffs");
 
                     b.Navigation("Vehicles");
+                });
+
+            modelBuilder.Entity("Backend.Models.Company", b =>
+                {
+                    b.Navigation("CompanyUsers");
                 });
 
             modelBuilder.Entity("Backend.Models.LogItem", b =>

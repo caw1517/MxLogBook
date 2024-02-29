@@ -1,4 +1,5 @@
 ﻿using Backend.Models;
+using Backend.Models.RelationshipTables;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Backend.Data
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<SignOff> SignOffs { get; set; }
         public DbSet<Company> Companys { get; set; }
+        public DbSet<InviteToken> Invites { get; set; }
 
         //Seed Temp Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)

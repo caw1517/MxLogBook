@@ -16,5 +16,10 @@ namespace Backend.Models
         
         //Many - Many
         public virtual IList<Company> Companies { get; set; }
+
+        public ApplicationUser()
+        {
+            Companies = new List<Company>();
+        }
     }
 }

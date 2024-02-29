@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229143709_dbsetInvite")]
+    partial class dbsetInvite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,7 +193,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9994),
+                            CreatedOn = new DateTime(2024, 2, 29, 14, 37, 8, 815, DateTimeKind.Utc).AddTicks(6855),
                             Discrepency = "Rear right hand tire has slow leak.",
                             UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
                             VehicleId = 1
@@ -272,7 +275,7 @@ namespace Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 29, 19, 2, 27, 888, DateTimeKind.Utc).AddTicks(9905),
+                            CreatedOn = new DateTime(2024, 2, 29, 14, 37, 8, 815, DateTimeKind.Utc).AddTicks(6739),
                             Make = "Ford",
                             Mileage = 61000,
                             Model = "F-150",
@@ -309,25 +312,25 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b9a68ac9-f3a2-4ef6-a7f5-a76fa69e7b84",
+                            Id = "a749b957-445d-4d22-91bf-f3c8644705d7",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "65f12336-1252-4a50-9a68-b3ddb1e900de",
+                            Id = "7c9a3b12-2ac3-4187-87ab-cc11d96890e9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6003d622-2f59-488f-af20-131ee6380a05",
+                            Id = "40adcf81-05bd-4e93-9a90-a7830c57784f",
                             Name = "CompanyUser",
                             NormalizedName = "COMPANYUSER"
                         },
                         new
                         {
-                            Id = "55ada520-676a-451e-a05c-ea6fbb2900e4",
+                            Id = "1ad2fe29-fc9d-442c-a21b-3e6cee5360b1",
                             Name = "CompanyAdmin",
                             NormalizedName = "COMPANYADMIN"
                         });
