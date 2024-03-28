@@ -46,18 +46,14 @@ namespace Backend.Services
 
         public async Task<T> GetAsync(int? id)
         {
-            //If Id is null throw error
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            //Pull the result
             var result =  await _context.Set<T>().FindAsync(id);
 
-            //If the item doesn't exist throw error
             if (result == null)
                 throw new InvalidOperationException("Not Found");
 
-            //Return result
             return result;
         }
 

@@ -14,20 +14,25 @@ namespace Backend.Services
 
         public async Task<List<LogItem>> GetAllByVehicleId(int vehicleId)
         {
-            var logs = await _dbContext.LogItems.Include(q => q.User).Where(v => v.VehicleId == vehicleId).ToListAsync();
+            var logs = await _dbContext.LogItems
+                .Include(q => q.User)
+                .ThenInclude(so => so!.SignOffs)
+                .Where(v => v.VehicleId == vehicleId).ToListAsync();
 
-            if (logs == null)
-                return null;
+            if (logs.Count == 0)
+                throw new InvalidOperationException("No logs assigned to that vehicle.");
 
             return logs;
         }
 
         public async Task<LogItem> GetLogItemAsyncById(int id)
         {
-            //Will return null if value can not be found
             var res = await _dbContext.LogItems.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);
 
-            return res!;
+            if (res == null)
+                throw new InvalidOperationException("Not Found");
+            
+            return res;
         }
 
         public async Task SetLogItemStatus(int logId, bool status)

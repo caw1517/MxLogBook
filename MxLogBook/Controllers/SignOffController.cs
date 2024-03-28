@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using Backend.DTOs.SignOff;
-using Backend.DTOs.Vehicles;
 using Backend.Models;
 using Backend.Services;
 using Backend.Services.SignOffs;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -18,70 +16,89 @@ namespace Backend.Controllers
         private readonly IMapper _mapper;
         private readonly ILogItemService _logItemService;
         private readonly ISignOffService _signOffService;
+        private readonly IVehicleService _vehicleService;
 
-        public SignOffController(IMapper mapper, ILogItemService logItemService, ISignOffService signOffService)
+        public SignOffController(IMapper mapper, ILogItemService logItemService, ISignOffService signOffService, IVehicleService vehicleService)
         {
             _mapper = mapper;
             _logItemService = logItemService;
             _signOffService = signOffService;
+            _vehicleService = vehicleService;
         }
 
-        //GET: GETS SIGNLE SIGN OFF BY ID - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
-        [HttpGet("{id}")]
-        public async Task<ActionResult<GetSignOffDto>> GetSignOff(int id)
+        [HttpGet("{signOffId:int}")]
+        public async Task<ActionResult<GetSignOffDto>> GetSignOff(int signOffId)
         {
-            var signOff = await _signOffService.GetAsync(id);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+            try
+            {
+                var signOff = await _signOffService.GetAsync(signOffId);
 
-            if (signOff == null)
-                return NotFound();
+                var vehicle = await _logItemService.GetAsync(signOff.LogId);
+                var vehicleId = vehicle.VehicleId;
 
-            var result = _mapper.Map<GetSignOffDto>(signOff);
+                if (await _vehicleService.VerifyVehicleOwner(userIdClaim, vehicleId) == false)
+                    return BadRequest(new { message = "Invalid vehicle owner" });
 
-            return Ok(result);
+                var result = _mapper.Map<GetSignOffDto>(signOff);
+
+                return Ok(result);
+            }
+            catch (InvalidOperationException e)
+            {
+                return NotFound("Sign off not found.");
+            }
+            catch (ArgumentNullException e)
+            {
+                return BadRequest(new { message = "Must supply a sign off id." });
+            }
+            
+            
         }
 
-        //GET: GETS ALL SIGN OFFS WITH ASSOCIATED LOG - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
-        [HttpGet("signoffbylog/{logId}")]
+        [HttpGet("signoffbylog/{logId:int}")]
         [Authorize]
         public async Task<ActionResult<List<GetSignOffDetailsDto>>> GetSignOffByLog(int logId)
         {
-            var signOffs = await _signOffService.GetSignOffFromLog(logId);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+            
+            try
+            {
+                var log = await _logItemService.GetAsync(logId);
+                if (await _vehicleService.VerifyVehicleOwner(userIdClaim, log.VehicleId) == false)
+                    return BadRequest(new { message = "Invalid vehicle owner" });
+                
+                var signOffs = await _signOffService.GetSignOffFromLog(logId);
 
-            if (signOffs == null)
-                return NotFound();
-
-            var result = _mapper.Map<List<GetSignOffDetailsDto>>(signOffs);
-            return Ok(result);
+                var result = _mapper.Map<List<GetSignOffDetailsDto>>(signOffs);
+                return Ok(result);
+            }
+            catch (InvalidOperationException e)
+            {
+                return NotFound(new { message = "Sign offs not found" });
+            }
         }
-
-        //GET: GETS ALL SIGN OFFS WITH ASSOCIATED TASK - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
-
-        //POST: GENERATES A NEW SIGN OFF - ONLY TO BE USED BY THE VEHICLE OWNER / SOMEONE WITH ACCESS TO THAT VEHICLE VIA COMPANY (TBI)
-        [HttpPost("{logId}")]
+        
+        [HttpPost("{logId:int}")]
         [Authorize]
         public async Task<ActionResult<NewSignOffDto>> CreateNewSignOff(int logId, NewSignOffDto newSignOff)
         {
-            //Make sure user owns vehicle / is in company that owns it
-            //Get the user id from the header
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var userIdClaim = identity.FindFirst("uid").Value;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
-            //Check if the signoff closes the log item
             if (newSignOff.CompletesItem == true)
                 await _logItemService.SetLogItemStatus(logId, newSignOff.CompletesItem);
 
-            //Set user id and log id
             newSignOff.UserId = userIdClaim;
-
             newSignOff.LogId = logId;
 
-            //Map the object
             var signOff = _mapper.Map<SignOff>(newSignOff);
 
-            //Add the sign off
             await _signOffService.AddAsync(signOff);
 
-            return CreatedAtAction("GetSignOff", new { id = signOff.Id }, newSignOff);
+            return Ok(new {message = "Sign off successfully created"});
         }
     }
 }

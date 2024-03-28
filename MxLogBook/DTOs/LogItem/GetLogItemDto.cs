@@ -1,6 +1,7 @@
 ﻿using Backend.DTOs.Auth;
 using Backend.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.DTOs.SignOff;
 
 namespace Backend.DTOs.LogItem
 {
@@ -15,6 +16,7 @@ namespace Backend.DTOs.LogItem
         public DateTime? CreatedOn { get; set; }
         public DateTime? ClosedOn { get; set; }
         public virtual GetUserBasicDto? User{ get; set; }
+        public virtual IList<GetSignOffDto>? SignOffs { get; set; }
 
     }
 }
