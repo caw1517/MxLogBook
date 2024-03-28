@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Backend.Models.RelationshipTables;
+using Microsoft.AspNetCore.Identity;
 
 namespace Backend.Models
 {
@@ -7,10 +8,12 @@ namespace Backend.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set;}
 
-        //Vehicle Relation
+        //One - Many
         public virtual IList<Vehicle>? Vehicles { get; set; }
-
         public virtual IList<LogItem>? LogItems { get; set; } 
         public virtual IList<SignOff>? SignOffs { get; set; }
+        
+        //Many - Many
+        public virtual IList<CompanyUserRoles> CompanyUserRoles { get; set; } = new List<CompanyUserRoles>();
     }
 }

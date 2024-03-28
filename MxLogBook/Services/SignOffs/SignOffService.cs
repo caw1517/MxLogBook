@@ -17,8 +17,8 @@ namespace Backend.Services.SignOffs
         {
             var res = await _dbContext.SignOffs.Include(q => q.User).Where(s => s.LogId == logId).ToListAsync();
 
-            if (res.Count <= 0)
-                return null;
+            if (res.Count == 0)
+                throw new InvalidOperationException("Not found");
 
             return res;
         }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Backend.Data;
 using Backend.DTOs.Auth;
 using Backend.Models;
 using Microsoft.AspNetCore.Identity;
@@ -16,12 +17,14 @@ namespace Backend.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
         private ApplicationUser _user;
+        private readonly MxLogBookDbContext _dbContext;
 
-        public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration)
+        public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, MxLogBookDbContext dbContext)
         {
             _mapper = mapper;   
             _userManager = userManager;
             _configuration = configuration;
+            _dbContext = dbContext;
         }
 
         public async Task<string> CreateRefreshToken()
@@ -78,6 +81,17 @@ namespace Backend.Services
 
             //Return any errors
             return result.Errors;
+        }
+
+
+        public async Task<bool> UserExists(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user != null)
+                return true;
+
+            return false;
         }
 
         public async Task<AuthResponseDto> VerifyRefreshToken(AuthResponseDto request)
@@ -147,6 +161,27 @@ namespace Backend.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<ApplicationUser> GetUserById(string userId)
+        {
+            var user = await _dbContext.Users.FindAsync(userId);
+
+            return user;
+        }
+
+        public async Task<List<string>> GetUserRoles(ApplicationUser user)
+        {
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            return userRoles.ToList();
+        }
+
+        public async Task<bool> AddUserRole(ApplicationUser user, string roleName)
+        {
+            await _userManager.AddToRoleAsync(user, roleName);
+
+            return true;
         }
     }
 }

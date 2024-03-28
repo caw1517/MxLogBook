@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Backend.DTOs.Auth;
+using Backend.DTOs.Company;
 using Backend.DTOs.LogItem;
 using Backend.DTOs.SignOff;
 using Backend.DTOs.Vehicles;
 using Backend.Models;
-using System.Configuration;
 
 namespace Backend.Configurations
 {
@@ -32,6 +32,13 @@ namespace Backend.Configurations
             CreateMap<SignOff, NewSignOffDto>().ReverseMap();
             CreateMap<SignOff, GetSignOffDto>().ReverseMap();
             CreateMap<SignOff, GetSignOffDetailsDto>().ReverseMap();
+
+            //Company
+            CreateMap<Company, GetCompanyDto>().ReverseMap();
+            CreateMap<Company, CreateCompanyDto>().ReverseMap();
+            CreateMap<InviteToken, CreateInviteTokenDto>().ReverseMap();
+            CreateMap<InviteToken, GetInviteTokenDto>().ReverseMap();
+            CreateMap<InviteToken, AcceptInviteDto>().ReverseMap();
         }
     }
 }

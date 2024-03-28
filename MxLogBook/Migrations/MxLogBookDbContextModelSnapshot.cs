@@ -92,6 +92,50 @@ namespace Backend.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Backend.Models.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companys");
+                });
+
+            modelBuilder.Entity("Backend.Models.InviteToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("ExpDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsValidToken")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("TokenNumber")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invites");
+                });
+
             modelBuilder.Entity("Backend.Models.LogItem", b =>
                 {
                     b.Property<int>("Id")
@@ -125,17 +169,42 @@ namespace Backend.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("LogItems");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Closed = false,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5986),
-                            Discrepency = "Rear right hand tire has slow leak.",
-                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
-                            VehicleId = 1
-                        });
+            modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUserRoles", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId", "CompanyId", "RoleId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("CompanyUserRoles");
+                });
+
+            modelBuilder.Entity("Backend.Models.Roles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RoleType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyRoles");
                 });
 
             modelBuilder.Entity("Backend.Models.SignOff", b =>
@@ -156,11 +225,9 @@ namespace Backend.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("WorkPerformed")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -182,6 +249,9 @@ namespace Backend.Migrations
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("text");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
@@ -209,19 +279,9 @@ namespace Backend.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("Vehicles");
+                    b.HasIndex("CompanyId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedOn = new DateTime(2024, 2, 16, 21, 59, 25, 566, DateTimeKind.Utc).AddTicks(5865),
-                            Make = "Ford",
-                            Mileage = 61000,
-                            Model = "F-150",
-                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
-                            Year = 2018
-                        });
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -252,13 +312,13 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d3fff9ff-1035-4262-b317-a6873c13d23d",
+                            Id = "88293afd-8974-4d70-8008-27d2a35fd076",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "a98e13d7-a7e9-49c0-af67-5d4217088fc8",
+                            Id = "d5d8ab2b-4d6d-498c-a740-a28a241ba6db",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -387,6 +447,33 @@ namespace Backend.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUserRoles", b =>
+                {
+                    b.HasOne("Backend.Models.Company", "Company")
+                        .WithMany("CompanyUserRoles")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.Roles", "Role")
+                        .WithMany("CompanyUserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Backend.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("CompanyUserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Backend.Models.SignOff", b =>
                 {
                     b.HasOne("Backend.Models.LogItem", "Log")
@@ -397,9 +484,7 @@ namespace Backend.Migrations
 
                     b.HasOne("Backend.Models.ApplicationUser", "User")
                         .WithMany("SignOffs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Log");
 
@@ -412,7 +497,13 @@ namespace Backend.Migrations
                         .WithMany("Vehicles")
                         .HasForeignKey("ApplicationUserId");
 
+                    b.HasOne("Backend.Models.Company", "Company")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("CompanyId");
+
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -468,6 +559,8 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Backend.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("CompanyUserRoles");
+
                     b.Navigation("LogItems");
 
                     b.Navigation("SignOffs");
@@ -475,9 +568,21 @@ namespace Backend.Migrations
                     b.Navigation("Vehicles");
                 });
 
+            modelBuilder.Entity("Backend.Models.Company", b =>
+                {
+                    b.Navigation("CompanyUserRoles");
+
+                    b.Navigation("Vehicles");
+                });
+
             modelBuilder.Entity("Backend.Models.LogItem", b =>
                 {
                     b.Navigation("SignOffs");
+                });
+
+            modelBuilder.Entity("Backend.Models.Roles", b =>
+                {
+                    b.Navigation("CompanyUserRoles");
                 });
 
             modelBuilder.Entity("Backend.Models.Vehicle", b =>

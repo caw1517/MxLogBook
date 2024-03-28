@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Backend.DTOs.LogItem;
-using Backend.DTOs.Vehicles;
 using Backend.Models;
 using Backend.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -17,127 +16,81 @@ namespace Backend.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ILogItemService _logService;
+        private readonly IVehicleService _vehicleService;
 
-        public LogItemController(IMapper mapper, ILogItemService logService)
+        public LogItemController(IMapper mapper, ILogItemService logService, IVehicleService vehicleService)
         {
             _mapper = mapper;
             _logService = logService;
+            _vehicleService = vehicleService;
         }
 
-        //GET: ALL LOG ITEMS - SHOULDN'T BE USED, ONLY TO BE USED BY ADMIN - THINK ABOUT DELETING
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetAllLogsDto>>> GetLogItems()
+        [HttpGet("{logId:int}")]
+        public async Task<ActionResult<GetLogItemDto>> GetLogItemById(int logId)
         {
-            var logs = await _logService.GetAllAsync();
-            var records = _mapper.Map<List<GetAllLogsDto>>(logs);
-            return Ok(records);
-        }
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
-        //GET: SINGLE LOG ITEM - USED IN THE CONTEXT OF OPENING A SINGLE LOG ITEM
-        [HttpGet("{id}")]
-        public async Task<ActionResult<GetLogItemDto>> GetLogItemById(int id)
-        {
-            var log = await _logService.GetLogItemAsyncById(id);
-
-            if (log == null)
+            try
             {
-                return NotFound();
+                var log = await _logService.GetLogItemAsyncById(logId);
+
+                var result = _mapper.Map<GetLogItemDto>(log);
+                
+                if (await _vehicleService.VerifyVehicleOwner(userIdClaim, result.VehicleId) == false)
+                    return BadRequest(new { message = "Invalid vehicle owner" });
+ 
+                if (result.VehicleId == 0)
+                    return BadRequest(new { message = "Vehicle does not have that log item." });
+
+                return Ok(result);
+            }
+            catch (InvalidOperationException e)
+            {
+                return NotFound(new { message = "Log Item Not Found." });
             }
 
-            var result = _mapper.Map<GetLogItemDto>(log);
-
-            return Ok(result);
 
         }
 
-        //GET: MULTIPLE ITEMS ASSOCIATED WITH SPECIFIC VEHICLE - USED BY PEOPLE THAT OWN VEHICLE / HAVE ACCESS VIA COMPANY
-        [HttpGet("logs/{vehicleId}")]
+        [HttpGet("logs/{vehicleId:int}")]
         public async Task<ActionResult<IEnumerable<GetLogItemDto>>> GetLogItemByVehicle(int vehicleId)
         {
-            var logs = await _logService.GetAllByVehicleId(vehicleId);
-            var records = _mapper.Map<List<GetLogItemDto>>(logs);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
-            return Ok(records);
+            try
+            {
+                if (await _vehicleService.VerifyVehicleOwner(userIdClaim, vehicleId) == false)
+                    return BadRequest(new { message = "Invalid vehicle owner." });
+            
+                var logs = await _logService.GetAllByVehicleId(vehicleId);
+                var records = _mapper.Map<List<GetLogItemDto>>(logs);
+
+                return Ok(records);
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
         }
 
-        //POST: CREATE A NEW LOG, CAN BE USED BY ANYONE AUTHORIZED.
         [HttpPost]
         public async Task<ActionResult<CreateLogItemDto>> CreateLogItem(CreateLogItemDto newLogItem)
         {
-            //Get the user id from the header
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var userIdClaim = identity.FindFirst("uid").Value;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
-            //Add that as the user's Id
+            if (await _vehicleService.VerifyVehicleOwner(userIdClaim, newLogItem.VehicleId) == false)
+                return BadRequest(new { message = "Invalid vehicle owner" });
+            
             newLogItem.UserId = userIdClaim;
-
-            //Map
+            
             var logItem = _mapper.Map<LogItem>(newLogItem);
             
             await _logService.AddAsync(logItem);
 
-            return CreatedAtAction(nameof(CreateLogItem), logItem);
-        }
-
-        //PUT: UPDATING A LOG, ONLY TO BE USED BY ADMINS. LOGS SHOULD STAY PERMANENT, EDITS TO DISCREPENCIES SHOULD TAKE PLACE AS A SIGN OFF OR GET AN ADMIN TO UPDATE.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLogItem(int id, UpdateLogItemDto updatedLogItem)
-        {
-            if (id != updatedLogItem.Id)
-            {
-                return BadRequest("Invalid Vehicle Id");
-            }
-
-            var logItem = await _logService.GetAsync(id);
-
-            if (logItem == null)
-            {
-                return NotFound();
-            }
-
-            //Check if the values are different
-            if (logItem.Discrepency == updatedLogItem.Discrepency || updatedLogItem.Discrepency == null)
-            {
-                updatedLogItem.Discrepency = logItem.Discrepency;
-            } else if (logItem.Closed == updatedLogItem.Closed || updatedLogItem.Closed == null)
-            {
-                updatedLogItem.Closed = logItem.Closed;
-            }
-
-            //Map the updated vehicle to the vehicle
-            _mapper.Map(updatedLogItem, logItem);
-
-            try
-            {
-                await _logService.UpdateAsync(logItem);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await _logService.Exists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        //DELETE - DELETE A LOG, RECORDS SHOULD BE PERMANENT. ONLY TO BE USED BY ADMIN.
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLogItem(int id)
-        {
-            var logItem = await _logService.GetAsync(id);
-
-            if (logItem is null)
-                return NotFound();
-
-            await _logService.DeleteAsync(id);
-
-            return NoContent();
+            return Ok(new {message = "Log Item Created"});
         }
     }
 }
