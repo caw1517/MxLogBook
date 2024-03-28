@@ -27,10 +27,7 @@ namespace Backend.Services
             //Will return null if value can not be found
             var res = await _dbContext.LogItems.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);
 
-            if (res == null)
-                return null;
-
-            return res;
+            return res!;
         }
 
         public async Task SetLogItemStatus(int logId, bool status)

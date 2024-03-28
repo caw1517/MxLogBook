@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240314163853_NewComputerMigrate")]
+    partial class NewComputerMigrate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,6 +172,17 @@ namespace Backend.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("LogItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Closed = false,
+                            CreatedOn = new DateTime(2024, 3, 14, 16, 38, 52, 544, DateTimeKind.Utc).AddTicks(6160),
+                            Discrepency = "Rear right hand tire has slow leak.",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            VehicleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUserRoles", b =>
@@ -250,9 +264,6 @@ namespace Backend.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("text");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
@@ -279,9 +290,19 @@ namespace Backend.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("CompanyId");
-
                     b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2024, 3, 14, 16, 38, 52, 544, DateTimeKind.Utc).AddTicks(6022),
+                            Make = "Ford",
+                            Mileage = 61000,
+                            Model = "F-150",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            Year = 2018
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -312,15 +333,27 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "88293afd-8974-4d70-8008-27d2a35fd076",
+                            Id = "796b9a64-e951-4191-8072-a983d14ab437",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "d5d8ab2b-4d6d-498c-a740-a28a241ba6db",
+                            Id = "a17e1230-4667-48db-98f6-16609c346e3f",
                             Name = "User",
                             NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "a97197a7-ce0e-4e37-8be6-ae5297d03693",
+                            Name = "CompanyUser",
+                            NormalizedName = "COMPANYUSER"
+                        },
+                        new
+                        {
+                            Id = "49aa6b3e-69f0-43e8-851f-6c91316614a7",
+                            Name = "CompanyAdmin",
+                            NormalizedName = "COMPANYADMIN"
                         });
                 });
 
@@ -497,13 +530,7 @@ namespace Backend.Migrations
                         .WithMany("Vehicles")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Backend.Models.Company", "Company")
-                        .WithMany("Vehicles")
-                        .HasForeignKey("CompanyId");
-
                     b.Navigation("ApplicationUser");
-
-                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -571,8 +598,6 @@ namespace Backend.Migrations
             modelBuilder.Entity("Backend.Models.Company", b =>
                 {
                     b.Navigation("CompanyUserRoles");
-
-                    b.Navigation("Vehicles");
                 });
 
             modelBuilder.Entity("Backend.Models.LogItem", b =>

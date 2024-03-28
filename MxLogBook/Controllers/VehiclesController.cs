@@ -5,6 +5,7 @@ using Backend.DTOs.Vehicles;
 using AutoMapper;
 using Backend.Services;
 using System.Security.Claims;
+using Backend.Services.Companies;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
@@ -17,12 +18,13 @@ namespace Backend.Controllers
         //Private
         private readonly IMapper _mapper;
         private readonly IVehicleService _vehicleService;
+        private readonly ICompanyService _companyService;
 
-
-        public VehiclesController (IMapper mapper, IVehicleService vehicleService)
+        public VehiclesController (IMapper mapper, IVehicleService vehicleService, ICompanyService companyService)
         {
             _vehicleService = vehicleService;
             _mapper = mapper;
+            _companyService = companyService;
         }
 
         // GET: ADMIN ONLY - THINK ABOUT DELETING
@@ -35,14 +37,13 @@ namespace Backend.Controllers
             var records = _mapper.Map<List<GetVehicleDto>>(vehicles);
             return Ok(records);
         }
-
-        //GET: USED BY FRONTEND TO GET A SPECIFIC USERS VEHICLE
-        [HttpGet("user/")]
+        
+        [HttpGet("user")]
         public async Task<ActionResult<IEnumerable<GetVehicleDetailsDto>>> GetVehiclesByUserId()
         {
             //Get the user id from the header
             var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var userIdClaim = identity.FindFirst("uid").Value;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
             //Get the vehicles
             var vehicles = await _vehicleService.GetVehiclesByUserId(userIdClaim);
@@ -51,95 +52,110 @@ namespace Backend.Controllers
             //Return Ok
             return Ok(records);
         }
-
-        // GET: USED BY FRONTEND TO GET A SPECIFIC LOG ITEM
-        [HttpGet("{id}")]
-        public async Task<ActionResult<GetVehicleDetailsDto>> GetVehicle(int id)
+        
+        [HttpGet("{vehicleId}")]
+        public async Task<ActionResult<GetVehicleDetailsDto>> GetVehicle(int vehicleId)
         {
-            var vehicle = await _vehicleService.GetDetails(id);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
 
-            if (vehicle == null)
-            {
+            if (await _vehicleService.VerifyVehicleOwner(userIdClaim, vehicleId) == false)
+                return BadRequest(new {message = "Invalid Vehicle Owner"});
+            
+            var vehicle = await _vehicleService.GetDetails(vehicleId);
+
+            if (vehicle is null)
                 return NotFound();
-            }
-
+            
             var result = _mapper.Map<GetVehicleDetailsDto>(vehicle);
 
             return Ok(result);
         }
 
-        // PUT: USED TO UPDATE VEHICLE OVERALL - ITEMS LIKE MILEAGE SHOULD BE HANDLED BY FUNCTIONS LIKE SIGNOFFS
+        [HttpGet("vehiclesByAllCompanies")]
+        public async Task<ActionResult<IEnumerable<GetVehicleDetailsDto>>> GetVehicleByAllCompanyForUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+            
+            var companies = await _companyService.GetUsersCompanyId(userIdClaim);
+            
+            if (companies.Count == 0)
+                return NotFound(new {message = "User is not apart of any companies."});
+
+            var vehiclesList = new List<Vehicle>();
+            
+            foreach (var company in companies)
+            {
+                vehiclesList.AddRange(await _vehicleService.GetVehiclesByCompanyId(company));
+            }
+            
+            if (vehiclesList.Count == 0)
+                return NotFound(new {message = "No vehicles assigned to that company"});
+
+            var res = _mapper.Map<List<GetVehicleDetailsDto>>(vehiclesList);
+
+            return Ok(res);
+        }
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateVehicle(int id, UpdateVehicleDto updatedVehicle)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userId = identity!.FindFirst("uid")!.Value;
+
+            if (await _vehicleService.VerifyVehicleOwner(userId, id) == false)
+                return BadRequest(new {message = "Invalid Vehicle Owner"});
+
             if (id != updatedVehicle.Id)
-            {
-                return BadRequest("Invalid Vehicle Id");
-            }
+                return BadRequest(new {message = "Invalid Vehicle Id"});
 
             var vehicle = await _vehicleService.GetAsync(id);
-            //var vehicle = await _context.vehicles.FirstOrDefaultAsync(q => q.Id == id);
 
-            if(vehicle == null)
-            {
-                return NotFound();
-            }
-
-            //Map the updated vehicle to the vehicle
             _mapper.Map(updatedVehicle, vehicle);
 
-            try
-            {
-                await _vehicleService.UpdateAsync(vehicle);
-                //await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await VehicleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _vehicleService.UpdateAsync(vehicle);
 
-            return NoContent();
+            return Ok();
         }
-
-        // POST: CREATE A NEW VEHICLE
+        
         [HttpPost]
         public async Task<ActionResult<Vehicle>> AddVehicle(AddVehicleDto newVehicle)
         {
-            //Map Vehicle DTO
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+            
             var vehicle = _mapper.Map<Vehicle>(newVehicle);
 
-            //Save the new vehicle
+            vehicle.UserId = userIdClaim;
+            
             await _vehicleService.AddAsync(vehicle);
 
-            //Return the newly created vehicle
-            return CreatedAtAction("GetVehicle", new { id = vehicle.Id }, vehicle);
+            return Ok(newVehicle);
+            //return CreatedAtAction("GetVehicle", new { id = vehicle.Id }, vehicle);
         }
-
-        // DELETE: DELETE A VEHICLE
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
-            var vehicle = await _vehicleService.GetAsync(id);
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+            
+            try
+            {
+                var vehicle = await _vehicleService.GetAsync(id);
 
-            if (vehicle == null)
-                return NotFound();
+                if (userIdClaim != vehicle.UserId)
+                    return BadRequest(new { message = "Must be owner of vehicle to delete" });
        
+                await _vehicleService.DeleteAsync(id);
 
-            await _vehicleService.DeleteAsync(id);
-
-            return NoContent();
-        }
-
-        private async Task<bool> VehicleExists(int id)
-        {
-            return await _vehicleService.Exists(id);
+                return Ok("Vehicle Deleted Successfully.");
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound(new { message = "Vehivle not found" });
+            }
         }
     }
 }

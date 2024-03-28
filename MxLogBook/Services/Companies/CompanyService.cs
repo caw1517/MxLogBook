@@ -90,6 +90,37 @@ namespace Backend.Services.Companies
             return true;
         }
 
+        public async Task<List<int>> GetUsersCompanyId(string userId)
+        {
+            var companies = await _dbContext.CompanyUserRoles
+                .Where(c => c.UserId == userId)
+                .Select(c => c.CompanyId)
+                .ToListAsync();
+
+            if (companies.Count == 0)
+                return new List<int>();
+            
+            return companies;
+        }
+
+        public async Task<bool> VerifyUserInCompany(string userId, int companyId)
+        {
+            var company = await _dbContext.CompanyUserRoles
+                .Where(c => c.CompanyId == companyId && c.UserId == userId).ToListAsync();
+            
+            return company.Count != 0;
+        }
+
+        public async Task<List<int>> GetUserRolesInCompany(string userId, int companyId)
+        {
+            var roles = await _dbContext.CompanyUserRoles
+                .Where(c => c.CompanyId == companyId && c.UserId == userId)
+                .Select(r => r.RoleId)
+                .ToListAsync();
+
+            return roles.Count > 0 ? roles : [];
+        }
+
         public async Task<Models.InviteToken> CreateInviteToken(Models.InviteToken inviteToken)
         {
 

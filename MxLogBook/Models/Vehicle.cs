@@ -11,17 +11,16 @@ namespace Backend.Models
         public int Year { get; set; }
         public int? Mileage { get; set; }
         public int? Hours { get; set; }
-        //Default Timestamp
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
-        //User Relation - One User To Many Vehicles
+        //One to Many
         [ForeignKey(nameof(UserId))]
-
         [Required]
         public string? UserId { get; set; }
         public ApplicationUser? ApplicationUser { get; set; }
-
-        //Log Item Relation - One To Many
+        public int? CompanyId { get; set; }
+        public Company? Company { get; set; }
         public virtual IList<LogItem>? LogItems { get; set; }
+        
     }
 }

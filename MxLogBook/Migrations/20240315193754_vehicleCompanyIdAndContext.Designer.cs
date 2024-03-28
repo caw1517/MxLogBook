@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240315193754_vehicleCompanyIdAndContext")]
+    partial class vehicleCompanyIdAndContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,6 +172,17 @@ namespace Backend.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("LogItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Closed = false,
+                            CreatedOn = new DateTime(2024, 3, 15, 19, 37, 53, 466, DateTimeKind.Utc).AddTicks(9713),
+                            Discrepency = "Rear right hand tire has slow leak.",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            VehicleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUserRoles", b =>
@@ -282,6 +296,19 @@ namespace Backend.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = 1,
+                            CreatedOn = new DateTime(2024, 3, 15, 19, 37, 53, 466, DateTimeKind.Utc).AddTicks(9570),
+                            Make = "Ford",
+                            Mileage = 61000,
+                            Model = "F-150",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            Year = 2018
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -312,13 +339,13 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "88293afd-8974-4d70-8008-27d2a35fd076",
+                            Id = "e2573724-09f8-498f-8973-6562cf593b5a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "d5d8ab2b-4d6d-498c-a740-a28a241ba6db",
+                            Id = "cc0324b6-5e55-4b66-ad34-3c43644f77d0",
                             Name = "User",
                             NormalizedName = "USER"
                         });

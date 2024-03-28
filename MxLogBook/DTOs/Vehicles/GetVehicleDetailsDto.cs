@@ -12,6 +12,7 @@ namespace Backend.DTOs.Vehicles
         public int? Hours { get; set; }
         public string? UserId { get; set; }
         public virtual IList<GetLogItemDto>? LogItems { get; set; }
+        public int? CompanyId { get; set; }
 
     }
 }

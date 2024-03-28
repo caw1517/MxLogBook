@@ -3,6 +3,7 @@ using System;
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Backend.Migrations
 {
     [DbContext(typeof(MxLogBookDbContext))]
-    partial class MxLogBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240315193302_vehicleCompanyId")]
+    partial class vehicleCompanyId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,6 +172,17 @@ namespace Backend.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("LogItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Closed = false,
+                            CreatedOn = new DateTime(2024, 3, 15, 19, 33, 1, 912, DateTimeKind.Utc).AddTicks(2169),
+                            Discrepency = "Rear right hand tire has slow leak.",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            VehicleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Backend.Models.RelationshipTables.CompanyUserRoles", b =>
@@ -250,7 +264,7 @@ namespace Backend.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("text");
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedOn")
@@ -282,6 +296,19 @@ namespace Backend.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = 0,
+                            CreatedOn = new DateTime(2024, 3, 15, 19, 33, 1, 912, DateTimeKind.Utc).AddTicks(2019),
+                            Make = "Ford",
+                            Mileage = 61000,
+                            Model = "F-150",
+                            UserId = "66b55995-d23f-4b07-ab16-6425b63c603d",
+                            Year = 2018
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -312,15 +339,27 @@ namespace Backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "88293afd-8974-4d70-8008-27d2a35fd076",
+                            Id = "a2145f3e-8462-41aa-9649-c92264c186ed",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "d5d8ab2b-4d6d-498c-a740-a28a241ba6db",
+                            Id = "fa839868-2632-4447-8212-5599c9f0b630",
                             Name = "User",
                             NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "4322a0fc-a16e-4ce7-a876-7aa019257a8b",
+                            Name = "CompanyUser",
+                            NormalizedName = "COMPANYUSER"
+                        },
+                        new
+                        {
+                            Id = "dfdd35e6-0c00-4031-b3d1-b270c7f6b227",
+                            Name = "CompanyAdmin",
+                            NormalizedName = "COMPANYADMIN"
                         });
                 });
 
@@ -499,7 +538,9 @@ namespace Backend.Migrations
 
                     b.HasOne("Backend.Models.Company", "Company")
                         .WithMany("Vehicles")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ApplicationUser");
 

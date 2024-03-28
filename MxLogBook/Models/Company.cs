@@ -6,6 +6,12 @@ namespace Backend.Models
     {
         public int Id { get; set; }
         public string? CompanyName { get; set; }
-        public virtual IList<CompanyUserRoles> CompanyUserRoles { get; set; } = new List<CompanyUserRoles>();   
+        
+        //One to Many
+        public virtual IList<Vehicle>? Vehicles { get; set; }
+        
+        //Many to Many
+        public virtual IList<CompanyUserRoles> CompanyUserRoles { get; set; } = new List<CompanyUserRoles>();
+        
     }
 }

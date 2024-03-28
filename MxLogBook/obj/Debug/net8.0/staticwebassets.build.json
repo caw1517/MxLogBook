@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/oeyLG9LQ+NRbZx1vwV6q4X7SJvIl4P9Ff+SqVqQKd4=",
+  "Hash": "5WZ4hT6oYt+me7bATJNgaO00AUB+HZY+NAGA/ePgB0g=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -47,10 +47,10 @@
       "OriginalItemSpec": "C:\\Users\\w_can\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.1\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css",
+      "Identity": "E:\\Projects\\MxLogBook\\mxlogbook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css",
       "SourceId": "Backend",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "E:\\Projects\\MxLogBook\\mxlogbook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Backend",
       "RelativePath": "Backend.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\w_can\\OneDrive\\Desktop\\Projects\\NewMxLogBook\\MxLogBook\\MxLogBook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css"
+      "OriginalItemSpec": "E:\\Projects\\MxLogBook\\mxlogbook\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Backend.styles.css"
     }
   ]
 }
