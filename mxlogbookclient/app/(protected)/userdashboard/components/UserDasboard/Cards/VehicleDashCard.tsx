@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import {useAppDispatch, useAppSelector} from "@/app/store/store";
 import {useEffect} from "react";
-import {GetUserVehicles} from "@/app/actions/GetUserVehicles";
+import {GetUserVehicles} from "@/app/actions/Vehicles/GetUserVehicles";
 import {setError, setVehicles} from "@/app/slices/vehicleslice";
 import {GetLogsByUser} from "@/app/actions/Logs/GetLogsByUser";
 import {logSlice, setLogs} from "@/app/slices/logSlice";
