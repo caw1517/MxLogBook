@@ -39,6 +39,7 @@ namespace Backend.Configurations
             CreateMap<InviteToken, CreateInviteTokenDto>().ReverseMap();
             CreateMap<InviteToken, GetInviteTokenDto>().ReverseMap();
             CreateMap<InviteToken, AcceptInviteDto>().ReverseMap();
+            CreateMap<Company, GetCompanyWithoutUserDto>().ReverseMap();
         }
     }
 }

@@ -15,12 +15,14 @@ interface Vehicle {
 export interface IVehicleState {
     vehicles: Vehicle[],
     singleVehicle: Vehicle,
+    companyVehicles: Vehicle[],
     error: string | null
 }
 
 //Init state
 const initialState: IVehicleState = {
     vehicles: [],
+    companyVehicles: [],
     singleVehicle: {
         id: null,
         make: '',
@@ -46,9 +48,17 @@ export const vehicleSlice = createSlice({
         },
         setSingleVehicle: (state, action: PayloadAction<Vehicle>) => {
             state.singleVehicle = action.payload;
+        },
+        setCompanyVehicles: (state, action: PayloadAction<Vehicle[]>) => {
+            state.companyVehicles = action.payload;
         }
     },
 })
 
-export const { setVehicles, setError, setSingleVehicle } = vehicleSlice.actions;
+export const { 
+    setVehicles,
+    setError,
+    setSingleVehicle,
+    setCompanyVehicles 
+} = vehicleSlice.actions;
 export const vehicleReducer = vehicleSlice.reducer;

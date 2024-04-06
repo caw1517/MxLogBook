@@ -121,6 +121,19 @@ namespace Backend.Services.Companies
             return roles.Count > 0 ? roles : [];
         }
 
+        public async Task<List<Company>> GetUsersCompanies(string userId)
+        {
+            //var user = await _dbContext.Users.FirstOrDefaultAsync(c => c.Id == userId);
+            
+            var companies = await _dbContext.CompanyUserRoles.Where(c => c.UserId == userId)
+                .Select(c => c.Company)
+                .ToListAsync();
+            
+            if (companies.Count == 0) throw new InvalidOperationException();
+            
+            return companies;
+        }
+
         public async Task<Models.InviteToken> CreateInviteToken(Models.InviteToken inviteToken)
         {
 

@@ -25,6 +25,19 @@ namespace Backend.Services
             return logs;
         }
 
+        public async Task<List<LogItem>> GetLogsByUserId(string userId)
+        {
+            var logs = await _dbContext.LogItems
+                .Include(q => q.User)
+                .ThenInclude(so => so!.SignOffs)
+                .Where(u => u.UserId == userId).ToListAsync();
+
+            if (logs.Count == 0)
+                throw new InvalidOperationException("This user currently has no logs");
+
+            return logs;
+        }
+
         public async Task<LogItem> GetLogItemAsyncById(int id)
         {
             var res = await _dbContext.LogItems.Include(q => q.User).FirstOrDefaultAsync(q => q.Id == id);

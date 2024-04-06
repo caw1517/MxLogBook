@@ -75,6 +75,25 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpGet("logs/byUser")]
+        public async Task<ActionResult<IEnumerable<GetLogItemDto>>> GetLogItemByUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdClaim = identity!.FindFirst("uid")!.Value;
+
+            try
+            {
+                var logs = await _logService.GetLogsByUserId(userIdClaim);
+                var res = _mapper.Map<List<GetLogItemDto>>(logs);
+
+                return Ok(res);
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new { message = e.Message });
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<CreateLogItemDto>> CreateLogItem(CreateLogItemDto newLogItem)
         {

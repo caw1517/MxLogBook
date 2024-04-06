@@ -1,5 +1,4 @@
 ﻿using Backend.DTOs.Auth;
-using Backend.Models;
 
 namespace Backend.DTOs.Company
 {
